@@ -22,6 +22,26 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - UMCCommon (2.0.1)
+  - UMCSecurityPlugins (1.0.6)
+  - UMCShare/Core (6.9.5):
+    - UMCCommon
+  - UMCShare/Social/ReducedQQ (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedSina (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/WeChat (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+    - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
   - WebViewJavascriptBridge (6.0.2)
 
 DEPENDENCIES:
@@ -30,6 +50,12 @@ DEPENDENCIES:
   - Masonry (~> 1.0.2)
   - MJRefresh (~> 3.1.12)
   - SDWebImage (~> 3.8.2)
+  - UMCCommon
+  - UMCSecurityPlugins
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedSina
+  - UMCShare/Social/WeChat
+  - UMCShare/UI
   - WebViewJavascriptBridge (= 6.0.2)
 
 SPEC REPOS:
@@ -40,6 +66,9 @@ SPEC REPOS:
     - Masonry
     - MJRefresh
     - SDWebImage
+    - UMCCommon
+    - UMCSecurityPlugins
+    - UMCShare
     - WebViewJavascriptBridge
 
 SPEC CHECKSUMS:
@@ -49,8 +78,11 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  UMCCommon: 0263a057a2e1ae1da4c8308541e56904a493ce13
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  UMCShare: 552b29753f1b4da87b51d96545ed19e6263df397
   WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
 
-PODFILE CHECKSUM: 6f0de413fd69c587c87af62c55f16bfcbe551d0b
+PODFILE CHECKSUM: 024315779f7470f85b93c39a78474381e2ee049e
 
 COCOAPODS: 1.6.1

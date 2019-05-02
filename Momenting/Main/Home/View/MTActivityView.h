@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MTMarketHotView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MTActivityView : UIView
+
+@property (strong, nonatomic) MTMarketHotView *hotView;
 
 @end
 

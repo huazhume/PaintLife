@@ -44,7 +44,7 @@
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         _imageView.backgroundColor = [UIColor purpleColor];
-        _imageView.layer.cornerRadius = 2;
+        _imageView.layer.cornerRadius = 8;
         _imageView.layer.masksToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
     }

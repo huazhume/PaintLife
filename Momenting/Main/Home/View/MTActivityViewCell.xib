@@ -26,12 +26,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="253" height="292.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活呀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-vf-Iop">
-                                <rect key="frame" x="20" y="30" width="49" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xy0-vz-SmG">
                                 <rect key="frame" x="0.0" y="0.0" width="253" height="292.5"/>
                                 <connections>
@@ -46,9 +40,7 @@
                             <constraint firstAttribute="trailing" secondItem="5kC-8e-LNR" secondAttribute="trailing" id="Fgh-Yy-2a3"/>
                             <constraint firstItem="5kC-8e-LNR" firstAttribute="leading" secondItem="YPq-fI-oKk" secondAttribute="leading" id="Kvg-4n-ofw"/>
                             <constraint firstAttribute="bottom" secondItem="5kC-8e-LNR" secondAttribute="bottom" id="O9f-9V-j1f"/>
-                            <constraint firstItem="hD4-vf-Iop" firstAttribute="top" secondItem="YPq-fI-oKk" secondAttribute="top" constant="30" id="UDB-af-5gY"/>
                             <constraint firstItem="Xy0-vz-SmG" firstAttribute="top" secondItem="YPq-fI-oKk" secondAttribute="top" id="WoH-UE-vcd"/>
-                            <constraint firstItem="hD4-vf-Iop" firstAttribute="leading" secondItem="YPq-fI-oKk" secondAttribute="leading" constant="20" id="nTL-V0-kZY"/>
                             <constraint firstAttribute="trailing" secondItem="Xy0-vz-SmG" secondAttribute="trailing" id="oN5-MR-f9k"/>
                             <constraint firstItem="Xy0-vz-SmG" firstAttribute="leading" secondItem="YPq-fI-oKk" secondAttribute="leading" id="pG9-An-p5S"/>
                         </constraints>
@@ -60,12 +52,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="253" height="292.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生活呀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGc-ed-njx">
-                                <rect key="frame" x="20" y="30" width="49" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOy-oH-eLf">
                                 <rect key="frame" x="0.0" y="0.0" width="253" height="292.5"/>
                                 <connections>
@@ -78,13 +64,11 @@
                             <constraint firstItem="uc6-JG-7vo" firstAttribute="leading" secondItem="DpL-GC-Y7U" secondAttribute="leading" id="4A1-Qz-jGK"/>
                             <constraint firstItem="eOy-oH-eLf" firstAttribute="leading" secondItem="DpL-GC-Y7U" secondAttribute="leading" id="7JH-VU-fsV"/>
                             <constraint firstAttribute="bottom" secondItem="eOy-oH-eLf" secondAttribute="bottom" id="8fk-Zq-NNh"/>
-                            <constraint firstItem="cGc-ed-njx" firstAttribute="top" secondItem="DpL-GC-Y7U" secondAttribute="top" constant="30" id="SaO-Em-edR"/>
                             <constraint firstItem="uc6-JG-7vo" firstAttribute="top" secondItem="DpL-GC-Y7U" secondAttribute="top" id="Xif-4S-tNE"/>
                             <constraint firstAttribute="bottom" secondItem="uc6-JG-7vo" secondAttribute="bottom" id="YNZ-oK-fsY"/>
                             <constraint firstAttribute="trailing" secondItem="eOy-oH-eLf" secondAttribute="trailing" id="Yrs-Vz-Q8V"/>
                             <constraint firstAttribute="trailing" secondItem="uc6-JG-7vo" secondAttribute="trailing" id="ZEu-wk-T1u"/>
                             <constraint firstItem="eOy-oH-eLf" firstAttribute="top" secondItem="DpL-GC-Y7U" secondAttribute="top" id="pdZ-FJ-7YI"/>
-                            <constraint firstItem="cGc-ed-njx" firstAttribute="leading" secondItem="DpL-GC-Y7U" secondAttribute="leading" constant="20" id="r8e-TX-Ubg"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -103,8 +87,6 @@
             <connections>
                 <outlet property="imageView1" destination="5kC-8e-LNR" id="eP1-Oh-qbW"/>
                 <outlet property="imageView2" destination="uc6-JG-7vo" id="Ije-bQ-3kd"/>
-                <outlet property="label1" destination="hD4-vf-Iop" id="AWV-8C-v7h"/>
-                <outlet property="label2" destination="cGc-ed-njx" id="1YJ-Jh-cDe"/>
             </connections>
             <point key="canvasLocation" x="109.59999999999999" y="3.5982008995502253"/>
         </tableViewCell>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,6 +43,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thj-L2-r2X" customClass="MTActivityView">
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9y-YG-Yx4">
                                 <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -103,15 +108,19 @@
                         <constraints>
                             <constraint firstItem="vQ2-aj-2Px" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3Tt-Z5-5xh"/>
                             <constraint firstItem="thj-L2-r2X" firstAttribute="trailing" secondItem="CiH-dz-Yzl" secondAttribute="trailing" id="8Jl-Cp-Zng"/>
+                            <constraint firstItem="C9y-YG-Yx4" firstAttribute="bottom" secondItem="5yz-6R-GSx" secondAttribute="bottom" id="9hm-Qp-QGF"/>
                             <constraint firstItem="vQ2-aj-2Px" firstAttribute="bottom" secondItem="CiH-dz-Yzl" secondAttribute="top" id="CfO-Xi-tIF"/>
                             <constraint firstItem="XVY-E6-jDL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DnI-ft-W5q"/>
                             <constraint firstAttribute="bottom" secondItem="llt-pb-VjC" secondAttribute="bottom" id="GKt-OP-Ydb"/>
+                            <constraint firstItem="C9y-YG-Yx4" firstAttribute="top" secondItem="vQ2-aj-2Px" secondAttribute="bottom" id="Lwu-2N-aSl"/>
                             <constraint firstItem="llt-pb-VjC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-20" id="OLE-Q5-pop"/>
                             <constraint firstAttribute="bottom" secondItem="CiH-dz-Yzl" secondAttribute="bottom" id="OfP-Ve-FAu"/>
                             <constraint firstItem="thj-L2-r2X" firstAttribute="leading" secondItem="CiH-dz-Yzl" secondAttribute="leading" id="P2I-0I-R1j"/>
+                            <constraint firstItem="C9y-YG-Yx4" firstAttribute="leading" secondItem="5yz-6R-GSx" secondAttribute="leading" id="QHf-LK-DHA"/>
                             <constraint firstItem="XVY-E6-jDL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-850" id="R0D-sa-ALC"/>
                             <constraint firstItem="llt-pb-VjC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="S59-rB-ftA"/>
                             <constraint firstAttribute="bottom" secondItem="XVY-E6-jDL" secondAttribute="bottom" id="SGt-0P-eGA"/>
+                            <constraint firstItem="C9y-YG-Yx4" firstAttribute="trailing" secondItem="5yz-6R-GSx" secondAttribute="trailing" id="U36-Ic-H5j"/>
                             <constraint firstItem="thj-L2-r2X" firstAttribute="bottom" secondItem="CiH-dz-Yzl" secondAttribute="bottom" id="WW0-nE-g2J"/>
                             <constraint firstItem="vQ2-aj-2Px" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dgJ-of-xDf"/>
                             <constraint firstItem="CiH-dz-Yzl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dz6-e8-bOD"/>
@@ -121,6 +130,7 @@
                             <constraint firstAttribute="trailing" secondItem="vQ2-aj-2Px" secondAttribute="trailing" id="tR3-LQ-7xs"/>
                             <constraint firstItem="CiH-dz-Yzl" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="zfo-vA-Ljc"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="5yz-6R-GSx"/>
                     </view>
                     <navigationItem key="navigationItem" id="elc-ie-app"/>
                     <connections>
@@ -128,6 +138,7 @@
                         <outlet property="bgImageView" destination="llt-pb-VjC" id="fmw-v7-m2G"/>
                         <outlet property="headerView" destination="vQ2-aj-2Px" id="VNI-VJ-kCY"/>
                         <outlet property="headerViewTopConstraint" destination="dgJ-of-xDf" id="9rk-FL-D3y"/>
+                        <outlet property="paintBgView" destination="C9y-YG-Yx4" id="xfO-tf-8Hb"/>
                         <outlet property="setView" destination="XVY-E6-jDL" id="gTZ-s7-Dnb"/>
                         <outlet property="setViewLeadingConstraint" destination="R0D-sa-ALC" id="55x-50-NhB"/>
                         <outlet property="setViewLeadingCostraint" destination="R0D-sa-ALC" id="PNN-PD-spn"/>

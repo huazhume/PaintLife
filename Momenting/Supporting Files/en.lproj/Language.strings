@@ -11,6 +11,7 @@
 "modifyLanguage" = "Modify language";
 "notifications" = "Notifications";
 "pushNotification" = "Push notification";
+"issiaTitle" = "Feedback";
 "contactUs" = "Contact us";
 "WebNotification" = "updateWeb";
 "about" = "About";
@@ -37,7 +38,8 @@
 "noteNext" = "Next";
 "username" = "Your nikeName";
 "userDescription" = "About me";
-"home_note" = "Note";
-"home_recommend" = "Read";
+"home_note" = "material";
+"home_recommend" = "My Paint";
+"home_works" = "Works";
 
 

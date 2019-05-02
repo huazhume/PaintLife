@@ -28,11 +28,17 @@
 #import "FLBaseWebViewController.h"
 #import "MTLaunchController.h"
 #import "MTActivityView.h"
+#import "MTPaintSectionView.h"
+#import "MTPaintWorksView.h"
+#import "MTMyPaintViewCell.h"
+#import <UMShare/UMSocialDataManager.h>
+#import <UShareUI/UShareUI.h>
 
 @interface ViewController ()
 <UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,
 MTHomeSectionViewDelegate,
-MTHomeEmptyViewDelegate>
+MTHomeEmptyViewDelegate,
+MTPaintWorksViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MTDeleteStyleTableView *tableView;
 @property (strong, nonatomic) MTHomeSectionView *sectionView;
@@ -51,6 +57,14 @@ MTHomeEmptyViewDelegate>
 
 @property (strong, nonatomic) MTHomeWebModel *webModel;
 @property (weak, nonatomic) IBOutlet MTActivityView *activityView;
+@property (strong, nonatomic) MTPaintWorksView *paintView;
+@property (weak, nonatomic) IBOutlet UIView *paintBgView;
+
+@property (strong, nonatomic) NSMutableArray *myPatingArray;
+
+
+@property (nonatomic, strong) NSTimer *marketTimer;
+@property (nonatomic, assign) NSInteger totalTimes;
 
 @end
 
@@ -71,7 +85,7 @@ MTHomeEmptyViewDelegate>
     [super viewWillAppear:animated];
     
     self.datalist = [[[MTLocalDataManager shareInstance] getNoteSelf] mutableCopy];
-    [self.tableView reloadData];
+    
     
     NSString * path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
     NSString *fileName = @"homeStyle";
@@ -81,11 +95,18 @@ MTHomeEmptyViewDelegate>
     MTMeModel *meModel = [MTUserInfoDefault getUserDefaultMeModel];
     self.sectionView.name = meModel.name;
     [self.setView refreshData];
+    
+    self.myPatingArray = [[MTUserInfoDefault getPaintArrays] mutableCopy];
+    [self.tableView reloadData];
+
 }
 #pragma mark - Views
 - (void)initBaseViews
 {
     [self.tableView registerNib:[UINib nibWithNibName:@"MTHomeTextViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[MTHomeTextViewCell getIdentifier]];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"MTMyPaintViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[MTMyPaintViewCell getIdentifier]];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.navigationController.navigationBar.hidden = YES;
@@ -116,7 +137,12 @@ MTHomeEmptyViewDelegate>
     recognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.setView addGestureRecognizer:recognizer];
     
+    self.tableView.hidden = YES;
+    self.activityView.hidden = NO;
+    
 //    self.setViewLeadingCostraint.constant = -SCREEN_WIDTH;
+    [self.paintBgView addSubview:self.paintView];
+    [self addTimer];
 }
 
 - (void)loadNewData
@@ -174,98 +200,74 @@ MTHomeEmptyViewDelegate>
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-#pragma mark - ScrollView
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-//    if (scrollView.contentOffset.y - self.scrollViewOldOffset.y > 1) {
-//        //向下滑动
-//       [self scrollAnimationIsShow:NO];
-//    } else if (self.scrollViewOldOffset.y - scrollView.contentOffset.y > 0){
-//        [self scrollAnimationIsShow:YES];
-//    }
-//    self.scrollViewOldOffset = scrollView.contentOffset;
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    // 获取开始拖拽时tableview偏移量
-   self.scrollViewOldOffset = scrollView.contentOffset;
-}
-
-- (void)scrollAnimationIsShow:(BOOL)isShow
-{
-    NSDate *nowDate = [NSDate date];
-    
-    NSTimeInterval times = [nowDate timeIntervalSinceDate:self.lastScrollDate];
-//    if (self.isAnimationing || self.tableView.contentOffset.y <= 0 || times < 0.5 || self.tableView.contentOffset.y >= self.tableView.contentSize.height) {
-//        return;
-//    }
-    if (isShow && self.headerViewTopConstraint.constant == 0.f) {
-        return;
-    }
-    
-    if (!isShow && self.headerViewTopConstraint.constant == -60.f) {
-        return;
-    }
-    self.lastScrollDate = [NSDate date];
-    [self setNeedsStatusBarAppearanceUpdate];
-    [UIView animateWithDuration:0.29 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        self.headerViewTopConstraint.constant = isShow ? 0.f : -60.f;
-        [UIApplication sharedApplication].statusBarHidden = !isShow;
-        [self.view layoutIfNeeded];
-    } completion:^(BOOL finished) {
-        self.isAnimationing = NO;
-    }];
-}
-
-
 #pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.datalist.count;
+    
+    return section == 0 ? (self.myPatingArray.count ? 1 : 0) : self.datalist.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MTHomeTextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[MTHomeTextViewCell getIdentifier]];
-    MTNoteModel *model = self.datalist[indexPath.row];
-    model.indexRow = indexPath.row;
-    cell.model = model;
-    return cell;
+    if (indexPath.section) {
+        MTHomeTextViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[MTHomeTextViewCell getIdentifier]];
+        MTNoteModel *model = self.datalist[indexPath.row];
+        model.indexRow = indexPath.row;
+        cell.model = model;
+        return cell;
+    } else {
+        MTMyPaintViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[MTMyPaintViewCell getIdentifier]];
+        [cell setPageArray:self.myPatingArray];
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1f;
+    return 35.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return [UIView new];
+    MTPaintSectionView *view = [MTPaintSectionView loadFromNib];
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, 35);
+    view.titleLabel.text = section ? @"涂鸦作品" : @"涂鸦照片";
+    return view;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     MTHomeEmptyView *footView = [MTHomeEmptyView loadFromNib];
     footView.delegate = self;
+    
+    if (section == 0) {
+        footView.titleLabel.text = @"你还没有任何涂鸦照片哦，赶快在素材里涂鸦吧";
+        return self.myPatingArray.count > 0 ? [UIView new] : footView;
+    }
+    
+    footView.titleLabel.text = @"你还制作任何涂鸦卡片哦";
     return self.datalist.count > 0 ? [UIView new] : footView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return self.datalist.count > 0 ? 0.f : [MTHomeEmptyView viewHeight];
+    if (section == 0) {
+        return self.myPatingArray.count > 0 ? 0 : ([MTHomeEmptyView viewHeight] + 20);
+    }
+    
+    return self.datalist.count > 0 ? 0.f : ([MTHomeEmptyView viewHeight] + 20);
 }
 
 //先要设Cell可编辑
 - (NSArray*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-//    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:NSLocalizedString(@"", @"") handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
-//                                          {
-//                                              [tableView setEditing:NO animated:YES];  // 这句很重要，退出编辑模式，隐藏左滑菜单
-//
-//                                          }];
-//    deleteAction.backgroundColor = [UIColor whiteColor];
+    
     NSString *readTitle = @"";
     UITableViewRowAction *readAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:readTitle handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                         {
@@ -274,11 +276,19 @@ MTHomeEmptyViewDelegate>
                                                 if (index == 2){
                                                     return;
                                                 }
-                                                MTNoteModel *model = self.datalist[indexPath.row];
-                                                [[MTLocalDataManager shareInstance]deleteNoteWithNoteId:model.noteId];
-                                                [self.datalist removeObjectAtIndex:indexPath.row];
-                                                [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
-                                                 [tableView setEditing:NO animated:YES];
+                                                
+                                                if (indexPath.section == 0) {
+                                                    
+                                                   
+                                                } else {
+                                                    MTNoteModel *model = self.datalist[indexPath.row];
+                                                    [[MTLocalDataManager shareInstance]deleteNoteWithNoteId:model.noteId];
+                                                    [self.datalist removeObjectAtIndex:indexPath.row];
+                                                    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+                                                    [tableView setEditing:NO animated:YES];
+                                                }
+                                               
+                                                [self.tableView reloadData];
                                             }];
 
                                         }];
@@ -301,7 +311,12 @@ MTHomeEmptyViewDelegate>
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [MTHomeTextViewCell heightForCellWithModel:self.datalist[indexPath.row]];
+    
+    if (indexPath.section) {
+        return [MTHomeTextViewCell heightForCellWithModel:self.datalist[indexPath.row]];
+    } else {
+        return 160;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -343,8 +358,10 @@ MTHomeEmptyViewDelegate>
 
 - (void)homeButtonClickedWithIndex:(NSInteger)index
 {
-    self.activityView.hidden = !index;
-    self.tableView.hidden = index;
+    self.activityView.hidden = (index != 1);
+    self.tableView.hidden =  (index != 2);
+    self.paintView.hidden = (index != 0);
+    self.paintBgView.hidden = (index != 0);
 }
 
 #pragma mark - MTHomeEmptyViewDelegate
@@ -374,15 +391,97 @@ MTHomeEmptyViewDelegate>
     return _datalist;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (MTPaintWorksView *)paintView
 {
-    // 1.创建通知
+    if (!_paintView) {
+        _paintView = [MTPaintWorksView loadFromNib];
+        _paintView.hidden = YES;
+        _paintView.frame = self.tableView.bounds;
+        _paintView.delegate = self;
+    }
+    return _paintView;
+}
+
+- (void)sharedImage:(UIImage *)image
+{
+    
+    NSMutableArray *shareTypes = [@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_Qzone)] mutableCopy];
+    
+    if (![[UMSocialManager defaultManager] isInstall:UMSocialPlatformType_QQ]) {
+        [shareTypes removeObject:@(UMSocialPlatformType_QQ)];
+        [shareTypes removeObject:@(UMSocialPlatformType_Qzone)];
+    }
+    
+    
+    if (![[UMSocialManager defaultManager] isInstall:UMSocialPlatformType_WechatSession]) {
+        [shareTypes removeObject:@(UMSocialPlatformType_WechatSession)];
+        [shareTypes removeObject:@(UMSocialPlatformType_WechatTimeLine)];
+    }
+    [UMSocialUIManager setPreDefinePlatforms:shareTypes];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        
+        
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        //创建图片内容对象
+        UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+        //如果有缩略图，则设置缩略图
+        shareObject.thumbImage = image;
+        [shareObject setShareImage:image];
+        messageObject.shareObject = shareObject;
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            if (error) {
+                NSLog(@"************Share fail with error %@*********",error);
+            }else{
+                NSLog(@"response data is %@",data);
+            }
+        }];
+    }];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSTimer *)marketTimer
+{
+    if (!_marketTimer) {
+        _marketTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction:) userInfo:nil repeats:YES];
+    }
+    return _marketTimer;
+}
+
+
+
+#pragma mark - Timer
+//添加定时器
+-(void)addTimer{
+    [[NSRunLoop currentRunLoop] addTimer:self.marketTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)timerAction:(id)sender
+{
+    self.totalTimes ++;
+    [self.activityView.hotView switchCurrentBanner];
+}
+
+//删除定时器
+-(void)cleanTimer{
+    
+    if (_marketTimer) {
+        [_marketTimer invalidate];
+        _marketTimer = nil;
+    }
+}
+
+-(void)pauseTimer{
+    
+    if (_marketTimer) {
+        _marketTimer.fireDate = [NSDate distantFuture];
+    }
+}
+//继续定时器
+- (void)continueTimer {
+    if (_marketTimer) {
+        _marketTimer.fireDate = [NSDate dateWithTimeIntervalSinceNow:0.5];
+    }
 }
 
 

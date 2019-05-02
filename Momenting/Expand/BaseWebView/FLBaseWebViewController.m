@@ -44,7 +44,7 @@
     [self.view addSubview:self.navigationView];
     self.view.backgroundColor = [UIColor whiteColor];
     CGFloat y = 0;
-    self.webView = [[FLWebView alloc] initWithFrame:CGRectMake(0, self.isShowNavigation ? 55 + iPhoneTopMargin : -20, SCREEN_WIDTH , SCREEN_HEIGHT - (self.isShowNavigation ? 55 + iPhoneTopMargin : -20) ) url:self.url];
+    self.webView = [[FLWebView alloc] initWithFrame:CGRectMake(0, self.isShowNavigation ? 55 + iPhoneTopMargin : 0, SCREEN_WIDTH , SCREEN_HEIGHT - (self.isShowNavigation ? 55 + iPhoneTopMargin : 0) ) url:self.url];
     [self.webView loadWithUrl:_url];
     _webView.delegate = self;
     [self.view addSubview:_webView];

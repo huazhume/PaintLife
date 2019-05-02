@@ -14,6 +14,7 @@
 #import "MTLocalDataManager.h"
 #import "MTActionAlertView.h"
 #import "MTNotificationVo.h"
+#import "MTHomeEmptyView.h"
 
 
 @interface MTNotificationViewController ()
@@ -70,12 +71,14 @@ MTNavigationViewDelegate>
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.f;
+    return self.notifications.count ? 0 : 200.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return [UIView new];
+    MTHomeEmptyView *view = [MTHomeEmptyView loadFromNib];
+    view.titleLabel.text = @"添加一个作品提醒吧";
+    return self.notifications.count ? [UIView new] : view;
 }
 
 - (NSArray*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(nonnull NSIndexPath *)indexPath

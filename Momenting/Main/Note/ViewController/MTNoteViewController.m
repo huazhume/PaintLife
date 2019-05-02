@@ -69,6 +69,17 @@ MTWeatherAlertViewDelegate>
     [textCell becomeKeyboardFirstResponder];
     
     self.weatherTitle = @"A";
+    
+    if (self.imageUrl.length) {
+        MTNoteImageVo *model = [MTNoteImageVo new];
+        model.path = self.imageUrl;
+        model.width = 600;
+        model.height = 600;
+        [self.datalist addObject:model];
+        MTNoteTextVo *textModel = [MTNoteTextVo new];
+        [self.datalist addObject:textModel];
+        [self.tableView reloadData];
+    }
 }
 
 
@@ -284,6 +295,7 @@ MTWeatherAlertViewDelegate>
         [self.datalist replaceObjectAtIndex:self.selectIndexPath.row withObject:model];
         
     } else {
+        
         [self.datalist addObject:model];
         MTNoteTextVo *textModel = [MTNoteTextVo new];
         [self.datalist addObject:textModel];
@@ -355,7 +367,7 @@ MTWeatherAlertViewDelegate>
 #pragma mark - MTNavigationViewDelegate
 - (void)leftAction
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
 

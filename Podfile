@@ -10,6 +10,13 @@ pod 'AFNetworking', '3.1.0'
 pod 'WebViewJavascriptBridge', '6.0.2'
 pod 'JPush', '3.1.0'
 pod 'SDWebImage', '~> 3.8.2'
+pod 'UMCCommon'
+pod 'UMCSecurityPlugins'
+pod 'UMCShare/UI'
+pod 'UMCShare/Social/ReducedQQ'
+pod 'UMCShare/Social/WeChat'
+pod 'UMCShare/Social/ReducedSina'
+
   # Pods for Momenting
 
   target 'MomentingTests' do

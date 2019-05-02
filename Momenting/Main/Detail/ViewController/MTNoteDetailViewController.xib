@@ -54,29 +54,33 @@
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvg-tR-fM0">
-                            <rect key="frame" x="319" y="2" width="40" height="40"/>
+                            <rect key="frame" x="245" y="2" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="N0Q-yU-IBg"/>
                                 <constraint firstAttribute="height" constant="40" id="VcS-T8-U9B"/>
                             </constraints>
-                            <state key="normal" image="postFooter_share_outline"/>
+                            <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <state key="normal" image="postFooter_share_outline_1"/>
                             <connections>
                                 <action selector="downloadButtonClicked:" destination="-1" eventType="touchUpInside" id="gCp-VA-9Ey"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtQ-3h-n4Z">
-                            <rect key="frame" x="284" y="2" width="30" height="40"/>
+                            <rect key="frame" x="282" y="2" width="30" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="uVK-j3-L7i"/>
                             </constraints>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Eg-zkH">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4L-Eg-zkH">
                             <rect key="frame" x="319" y="2" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="0MC-Nr-22a"/>
                                 <constraint firstAttribute="height" constant="40" id="R22-9U-88n"/>
                             </constraints>
-                            <state key="normal" image="postFooter_respond_outline"/>
+                            <state key="normal" image="radioShareButton"/>
+                            <connections>
+                                <action selector="shared:" destination="-1" eventType="touchUpInside" id="SAO-Ri-sqm"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrV-V9-ViG">
                             <rect key="frame" x="8" y="2" width="40" height="40"/>
@@ -90,7 +94,7 @@
                             </connections>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFB-Pk-ze5">
-                            <rect key="frame" x="248" y="7" width="31" height="30"/>
+                            <rect key="frame" x="246" y="7" width="31" height="30"/>
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                             <state key="normal" title="举报">
                                 <color key="titleColor" red="0.01176470588" green="0.57647058819999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -104,14 +108,14 @@
                     <constraints>
                         <constraint firstItem="yrV-V9-ViG" firstAttribute="centerY" secondItem="5a2-sk-qfx" secondAttribute="centerY" id="1To-IA-wOy"/>
                         <constraint firstAttribute="trailing" secondItem="d4L-Eg-zkH" secondAttribute="trailing" constant="16" id="4GB-7m-qkj"/>
-                        <constraint firstItem="d4L-Eg-zkH" firstAttribute="leading" secondItem="WtQ-3h-n4Z" secondAttribute="trailing" constant="5" id="EXI-nI-giV"/>
+                        <constraint firstItem="d4L-Eg-zkH" firstAttribute="leading" secondItem="WtQ-3h-n4Z" secondAttribute="trailing" constant="7" id="EXI-nI-giV"/>
                         <constraint firstItem="d4L-Eg-zkH" firstAttribute="centerY" secondItem="5a2-sk-qfx" secondAttribute="centerY" id="JSB-d9-lZX"/>
                         <constraint firstItem="WtQ-3h-n4Z" firstAttribute="leading" secondItem="LFB-Pk-ze5" secondAttribute="trailing" constant="5" id="Zhu-qf-BNS"/>
                         <constraint firstItem="WtQ-3h-n4Z" firstAttribute="centerY" secondItem="5a2-sk-qfx" secondAttribute="centerY" id="dor-qG-ejW"/>
                         <constraint firstItem="LFB-Pk-ze5" firstAttribute="centerY" secondItem="5a2-sk-qfx" secondAttribute="centerY" id="k1u-m2-qlk"/>
                         <constraint firstAttribute="height" constant="44" id="pWq-HX-wd1"/>
                         <constraint firstItem="vvg-tR-fM0" firstAttribute="centerY" secondItem="5a2-sk-qfx" secondAttribute="centerY" id="rAE-Wd-X9A"/>
-                        <constraint firstAttribute="trailing" secondItem="vvg-tR-fM0" secondAttribute="trailing" constant="16" id="y6F-5b-KXi"/>
+                        <constraint firstAttribute="trailing" secondItem="vvg-tR-fM0" secondAttribute="trailing" constant="90" id="y6F-5b-KXi"/>
                         <constraint firstItem="yrV-V9-ViG" firstAttribute="leading" secondItem="5a2-sk-qfx" secondAttribute="leading" constant="8" id="yEZ-iG-vci"/>
                     </constraints>
                 </view>
@@ -135,7 +139,7 @@
     </objects>
     <resources>
         <image name="navBackButton" width="30" height="30"/>
-        <image name="postFooter_respond_outline" width="21" height="21"/>
-        <image name="postFooter_share_outline" width="20" height="26"/>
+        <image name="postFooter_share_outline_1" width="17" height="23"/>
+        <image name="radioShareButton" width="30" height="30"/>
     </resources>
 </document>

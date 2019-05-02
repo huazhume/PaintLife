@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "FLBaseWebViewController.h"
 #import "MTUserInfoDefault.h"
+#import "MTLaunchOnewController.h"
 
 
 @interface MTLaunchController () <UITextViewDelegate>
@@ -22,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *text =  @"感谢您使用MyLittleSecret\n\n"
+    NSString *text =  @"感谢您使用PaintLife\n\n"
     
     "我们依据最新法律规定更新了《用户协议》，请查阅。\n\n"
     
@@ -68,7 +69,8 @@
 - (IBAction)agreeButtonClicked:(id)sender
 {
     [MTUserInfoDefault saveAgreeSecretList];
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self presentViewController:[MTLaunchOnewController new] animated:NO completion:nil];
+
 }
 
 #pragma mark - UITextViewDelegate
@@ -79,10 +81,10 @@
     NSString *title = nil;
     if ([[URL scheme] isEqualToString:@"protocol1"]) {
         title = @"用户协议";
-        urlString = @"http://118.89.169.62:8080/web/UserAgreement.html";
+        urlString = @"http://139.196.45.126/UserAgreement.html";
     } else if ([[URL scheme] isEqualToString:@"protocol2"]) {
         title = @"隐私条款";
-        urlString = @"http://118.89.169.62:8080/web/PrivacyClause.html";
+        urlString = @"http://139.196.45.126/PrivacyClause.html";
     }
     
     urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@""];

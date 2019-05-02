@@ -8,16 +8,15 @@
 //
 
 #import "MTActivityView.h"
-#import "MTMarketHotView.h"
 #import <MJRefresh/MJRefresh.h>
-#import "MTActivityViewCell.h"
+#import "MTHomePaintViewCell.h"
 #import "MTNoteDetailViewController.h"
+#import "MTMediaFileManager.h"
+#import "UIImage+ImageCompress.h"
 
 @interface MTActivityView () <UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
-
-@property (strong, nonatomic) MTMarketHotView *hotView;
 
 @property (nonatomic, strong) NSTimer *marketTimer;
 @property (nonatomic, assign) NSInteger totalTimes;
@@ -36,13 +35,52 @@
         make.leading.trailing.bottom.top.equalTo(self);
     }];
     
+    self.dataArray = [NSMutableArray array];
+    
+    __block NSMutableArray *mu = [NSMutableArray array];
+    dispatch_async(dispatch_get_global_queue(0,0),  ^{
+        NSArray *paints_plist = @[@"animal_plist",@"msg_plist",@"floral_plist",@"author_plist",@"mandala_plist",@"famous_plist",@"garden_plist",@"dongfang_plist",@"exotic_plist"];
+        [paints_plist enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:obj ofType:@"plist"];
+            NSMutableDictionary *data= [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+            
+            NSArray *datas = [((NSDictionary *)[data objectForKey:@"frames"]) allKeys];
+            NSLog(@"%@",datas);
+            [mu addObject:datas];
+            
+            [datas enumerateObjectsUsingBlock:^(NSString *imageUrl, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
+                NSString *beta_path = [NSString stringWithFormat:@"%@/%@",path,imageUrl];
+                if (![fileManager fileExistsAtPath:beta_path]) {
+                    NSString *imagePath = [imageUrl substringFromIndex:4];
+                    UIImage *image = [UIImage compressImage:[UIImage imageNamed:imagePath] compressRatio:0.001];
+                    NSData *beta_data = nil;
+                    if (UIImagePNGRepresentation(image) == nil) {
+                        beta_data = UIImageJPEGRepresentation(image, 1.0);
+                    } else {
+                        beta_data = UIImagePNGRepresentation(image);
+                    }
+                    [fileManager createFileAtPath:beta_path contents:beta_data attributes:nil];
+                }
+            }];
+            
+        }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.dataArray = mu;
+            [self.tableView reloadData];
+        });
+    });
+   
+    
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+    
     NSMutableArray *muImage = [NSMutableArray array];
     for (int i = 1 ; i < 34 ; i ++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"dropdown_anim__000%d",i]];
         [muImage addObject:image];
     }
-    
-    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
     // 设置普通状态的动画图片
     [header setImages:muImage forState:MJRefreshStateIdle];
     // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
@@ -53,42 +91,6 @@
     header.lastUpdatedTimeLabel.hidden = YES;
     header.stateLabel.hidden = YES;
     self.tableView.mj_header = header;
-    [self addTimer];
-    
-    self.dataArray = [NSMutableArray array];
-    NSMutableArray *muArray1 = [NSMutableArray array];
-    [muArray1 addObject:@{@"title":@"奇妙物语",@"image":@"http://hpimg.pianke.com/e2fe4150cd894b4bead7fb237f30fa2c20170110.jpg",@"id" : @"detail_01"}];
-    [muArray1 addObject:@{@"title":@"难忘故乡",@"image":@"http://hpimg.pianke.com/60922b22ebf8a08b0268d2ab2d33fb4020171018.jpg",@"id" : @"detail_02"}];
-    
-    [self.dataArray addObject:muArray1];
-    
-    
-    NSMutableArray *muArray2 = [NSMutableArray array];
-    [muArray2 addObject:@{@"title":@"缘浅缘深，如溪如河",@"image":@"http://hpimg.pianke.com/0b968d61dfa265d008f15ed33292bb9120180511.jpeg",@"id" : @"detail_03"}];
-    [muArray2 addObject:@{@"title":@"浮生会",@"image":@"http://hpimg.pianke.com/bfc198dd1b13b9fdbb782f296018307820170111.jpg",@"id" : @"detail_04"}];
-    
-    [self.dataArray addObject:muArray2];
-    
-    
-    NSMutableArray *muArray3 = [NSMutableArray array];
-    [muArray3 addObject:@{@"title":@"读心术",@"image":@"http://hpimg.pianke.com/1ce5f4769efcd95fb167f01825c4550120170111.jpg",@"id" : @"detail_05"}];
-    [muArray3 addObject:@{@"title":@"早安故事",@"image":@"http://hpimg.pianke.com/fbd889ec355b066d6511cbe6e1b0cfda20170111.jpg",@"id" : @"detail_06"}];
-    
-    [self.dataArray addObject:muArray3];
-    
-    
-    NSMutableArray *muArray4 = [NSMutableArray array];
-    [muArray4 addObject:@{@"title":@"晚安故事",@"image":@"http://hpimg.pianke.com/2e556b3b94a03000c193fd92eb7487aa20190214.jpg?imageView2/2/w/300/format/jpg",@"id" : @"detail_07"}];
-    [muArray4 addObject:@{@"title":@"明天就要出嫁了",@"image":@"http://hpimg.pianke.com/7fa76174cb5dfa6b7ca2d257afc1911c20190223.jpg?imageView2/2/w/300/format/jpg",@"id" : @"detail_08"}];
-    
-    [self.dataArray addObject:muArray4];
-    
-    
-    NSMutableArray *muArray5 = [NSMutableArray array];
-    [muArray5 addObject:@{@"title":@"微笑是生活",@"image":@"http://hpimg.pianke.com/13b25b5c40d1f754948578c2a650426c20190307.png?imageView2/2/w/300/format/jpg",@"id" : @"detail_09"}];
-    [muArray5 addObject:@{@"title":@"凡事忧愁",@"image":@"http://hpimg.pianke.com/68db3f6ce7f129a6dfa8a458f997055820190219.jpg?imageView2/2/w/300/format/jpg",@"id" : @"detail_010"}];
-    
-    [self.dataArray addObject:muArray5];
     
 }
 
@@ -114,8 +116,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MTActivityViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[MTActivityViewCell getIdentifier]];
-    [cell setDataArray:self.dataArray[indexPath.row]];
+    MTHomePaintViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[MTHomePaintViewCell getIdentifier]];
+    
+    NSArray *items = @[@"动物",@"奇妙物语",@"花朵",@"生活作品",@"曼陀罗",@"现代生活",@"奇妙花园",@"古代东方",@"异国风景"];
+    [cell setTitle:items[indexPath.row]];
+    [cell setPageArray:self.dataArray[indexPath.row]];
     return cell;
 }
 
@@ -136,7 +141,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (SCREEN_WIDTH - 15)/2 + 10;
+    return 197.5;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -193,7 +198,7 @@
         _tableView.dataSource = self;
         _tableView.tableHeaderView = self.hotView;
         _tableView.backgroundColor = [UIColor whiteColor];
-        [_tableView registerNib:[UINib nibWithNibName:@"MTActivityViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[MTActivityViewCell getIdentifier]];
+        [_tableView registerNib:[UINib nibWithNibName:@"MTHomePaintViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[MTHomePaintViewCell getIdentifier]];
         
     }
     return _tableView;

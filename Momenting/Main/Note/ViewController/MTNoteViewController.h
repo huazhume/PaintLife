@@ -10,4 +10,6 @@
 
 @interface MTNoteViewController : MTBaseViewController
 
+@property (copy, nonatomic) NSString *imageUrl;
+
 @end

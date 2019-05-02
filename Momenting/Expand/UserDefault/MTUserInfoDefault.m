@@ -87,4 +87,29 @@ static NSString *kLanagureKey = @"appLanguage";
 }
 
 
++ (void)savePaintString:(NSString *)fileName
+{
+    NSString *key = @"PaintStrings";
+    
+    if (!fileName.length) {
+        [UIView showToastInKeyWindow:@"存储失败"];
+        return;
+    }
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:[self getPaintArrays]];
+    if (![array containsObject:fileName]) {
+        
+        [array addObject:fileName];
+        [[NSUserDefaults standardUserDefaults] setObject:array forKey:key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
++ (NSArray *)getPaintArrays
+{
+    NSString *key = @"PaintStrings";
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
+}
+
+
 @end

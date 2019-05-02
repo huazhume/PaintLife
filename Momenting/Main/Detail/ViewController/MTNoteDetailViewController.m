@@ -13,6 +13,8 @@
 #import "MTNoteModel.h"
 #import "MTLocalDataManager.h"
 #import "MTActionToastView.h"
+#import <UMShare/UMSocialDataManager.h>
+#import <UShareUI/UShareUI.h>
 #import "MTNoteDetailSectionView.h"
 
 @interface MTNoteDetailViewController ()
@@ -48,7 +50,6 @@ MTNavigationViewDelegate>
     self.weatherButton.titleLabel.font = [UIFont mtWeatherFontWithFontSize:22];
     NSArray *colors = @[[UIColor colorWithHex:0x96B46C],[UIColor colorWithHex:0xE48370],[UIColor colorWithHex:0xC496C5],[UIColor colorWithHex:0x79B47C],[UIColor colorWithHex:0xA299CE],[UIColor colorWithHex:0xA2AEBB] ];
     [self.weatherButton setTitleColor:colors[(int)arc4random_uniform(colors.count)] forState:UIControlStateNormal];
-    
     self.jubaoButton.hidden = !self.isJubaoHidden;
 }
 
@@ -244,5 +245,46 @@ MTNavigationViewDelegate>
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+
+- (IBAction)shared:(id)sender {
+    
+    __weak typeof(self) welkSelf = self;
+    [self.tableView renderViewToImageCompletion:^(UIImage *image) {
+        NSMutableArray *shareTypes = [@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_Qzone)] mutableCopy];
+        
+        if (![[UMSocialManager defaultManager] isInstall:UMSocialPlatformType_QQ]) {
+            [shareTypes removeObject:@(UMSocialPlatformType_QQ)];
+            [shareTypes removeObject:@(UMSocialPlatformType_Qzone)];
+        }
+        
+        
+        if (![[UMSocialManager defaultManager] isInstall:UMSocialPlatformType_WechatSession]) {
+            [shareTypes removeObject:@(UMSocialPlatformType_WechatSession)];
+            [shareTypes removeObject:@(UMSocialPlatformType_WechatTimeLine)];
+        }
+        [UMSocialUIManager setPreDefinePlatforms:shareTypes];
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            
+            
+            UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+            //创建图片内容对象
+            UMShareImageObject *shareObject = [[UMShareImageObject alloc] init];
+            //如果有缩略图，则设置缩略图
+            shareObject.thumbImage = image;
+            [shareObject setShareImage:image];
+            messageObject.shareObject = shareObject;
+            //调用分享接口
+            [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+                if (error) {
+                    NSLog(@"************Share fail with error %@*********",error);
+                }else{
+                    NSLog(@"response data is %@",data);
+                }
+            }];
+        }];
+    }];
+}
+
 
 @end

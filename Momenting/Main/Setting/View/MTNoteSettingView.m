@@ -14,6 +14,7 @@
 #import "MTLanguageViewController.h"
 #import <Masonry.h>
 #import "FLBaseWebViewController.h"
+#import "MTMyIssiaViewController.h"
 
 @interface MTNoteSettingView ()
 <UITableViewDelegate,UITableViewDataSource>
@@ -47,7 +48,7 @@
 
 - (void)loadData
 {
-    self.datalist = [@[@[@"header"],@[Localized(@"modifyProfile"),Localized(@"modifyLanguage")],@[Localized(@"notifications"),Localized(@"pushNotification")],@[Localized(@"contactUs"), Localized(@"about")]] mutableCopy];
+    self.datalist = [@[@[@"header"],@[Localized(@"modifyProfile"),Localized(@"modifyLanguage")],@[Localized(@"notifications"),Localized(@"pushNotification")],@[Localized(@"issiaTitle"),Localized(@"contactUs"), Localized(@"about")]] mutableCopy];
 }
 
 - (void)refreshData
@@ -79,12 +80,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if (section == 0 || section == 1) {
         return 1;
-    } else if (section ==  1 || section == 2) {
+    } else if (section == 2) {
         return 2;
     }
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,7 +112,7 @@
     } else if (section == 2) {
         return 30.f;
     }
-    return 30.f + 40.f;
+    return 30.f;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -169,7 +170,11 @@
             break;
         case 3:
         {
-            if (indexPath.row == 0) {
+            if (indexPath.row == 0){
+                //意见反馈
+                [[MTHelp currentNavigation]pushViewController:[MTMyIssiaViewController new] animated:YES];
+                
+            } else if (indexPath.row == 1) {
                 //联系我们
                 [self sendEmail];
             } else {
@@ -178,7 +183,7 @@
                 NSString * htmlPath = @"aboutours";
                 FLBaseWebViewController *web = [[FLBaseWebViewController alloc] initWithUrl:htmlPath];
                 web.isShowNavigation = YES;
-                web.navigationTitle = @"about us";
+                web.navigationTitle = @"关于我们";
                 [[MTHelp currentNavigation] pushViewController:web animated:YES];
             }
         }

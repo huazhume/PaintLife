@@ -21,13 +21,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="zsy-YF-gWI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg-i6plus" translatesAutoresizingMaskIntoConstraints="NO" id="zsy-YF-gWI">
                                 <rect key="frame" x="0.0" y="-34" width="375" height="701"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PaintingLife" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXx-vF-Nvk">
+                                <rect key="frame" x="130" y="170" width="115.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" red="0.01176470588" green="0.57647058819999997" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KXx-vF-Nvk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3Gw-aY-2Fg"/>
                             <constraint firstItem="zsy-YF-gWI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="4So-YO-D2X"/>
+                            <constraint firstItem="KXx-vF-Nvk" firstAttribute="top" secondItem="JvV-Vc-k5y" secondAttribute="bottom" constant="150" id="Drw-1S-AzZ"/>
                             <constraint firstAttribute="trailing" secondItem="zsy-YF-gWI" secondAttribute="trailing" id="FwB-EK-71E"/>
                             <constraint firstItem="7b0-ba-Pxs" firstAttribute="top" secondItem="zsy-YF-gWI" secondAttribute="bottom" id="KVv-cR-mw1"/>
                             <constraint firstItem="zsy-YF-gWI" firstAttribute="top" secondItem="JvV-Vc-k5y" secondAttribute="bottom" constant="-54" id="su5-kk-G9M"/>
@@ -40,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="appLaunch" width="375" height="667"/>
+        <image name="home-bg-i6plus" width="621" height="1104"/>
     </resources>
 </document>

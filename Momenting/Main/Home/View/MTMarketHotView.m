@@ -62,7 +62,7 @@
     
 //    if (!dataArray.count) return;
     _dataArray = dataArray;
-    self.pageArray = [@[@{},@{},@{},@{},@{}] mutableCopy];
+    self.pageArray = [@[@{},@{},@{},@{}] mutableCopy];
     self.pageControl.numberOfPages = self.pageArray.count - 2;
     NSArray *cells = self.collectionView.visibleCells;//加载出来的cells 当前只有一个
     if (!cells.count) {
@@ -103,12 +103,12 @@
     
     NSInteger index = indexPath.row - 1;
     if (indexPath.row == 0) {
-        index = 2;
+        index = 1;
     }
     if (indexPath.row == self.pageArray.count - 1) {
         index = 0;
     }
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"banner_0%ld",index+1]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"banners_%ld",index+1]];
     return cell;
 }
 
@@ -138,11 +138,15 @@
     if (indexPath.row == self.pageArray.count - 1) {
         index = 0;
     }
-    MTNoteDetailViewController *detailVC = [[MTNoteDetailViewController alloc] init];
-    detailVC.noteId = [NSString stringWithFormat:@"banner_0%ld",index+1];
-    detailVC.isJubaoHidden = YES;
-    detailVC.isStatusBarHidden = [UIApplication sharedApplication].isStatusBarHidden;
-    [[MTHelp currentNavigation] pushViewController:detailVC animated:YES];
+    
+    NSString *url = @"https://www.wenjuan.com/s/aYz2ai/";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:nil completionHandler:nil];
+    
+//    MTNoteDetailViewController *detailVC = [[MTNoteDetailViewController alloc] init];
+//    detailVC.noteId = [NSString stringWithFormat:@"banners_%ld",index+1];
+//    detailVC.isJubaoHidden = YES;
+//    detailVC.isStatusBarHidden = [UIApplication sharedApplication].isStatusBarHidden;
+//    [[MTHelp currentNavigation] pushViewController:detailVC animated:YES];
 }
 
 

@@ -19,6 +19,7 @@
 @interface MTHomeEmptyView : UIView
 
 @property (weak, nonatomic) id <MTHomeEmptyViewDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 + (instancetype)loadFromNib;
 

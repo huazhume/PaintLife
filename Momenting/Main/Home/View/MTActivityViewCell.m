@@ -39,15 +39,14 @@
     }
     NSDictionary *dic1 = dataArray[0];
     [self.imageView1 sd_setImageWithURL:[NSURL URLWithString:dic1[@"image"]]];
-    self.label1.text = dic1[@"title"];
-    
-    if (dataArray.count <= 1) {
-        return;
-    }
+  
     NSDictionary *dic2 = dataArray[1];
     [self.imageView2 sd_setImageWithURL:[NSURL URLWithString:dic2[@"image"]]];
     self.label2.text = dic2[@"title"];
-//    self
+    
+    
+    
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

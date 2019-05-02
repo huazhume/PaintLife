@@ -10,6 +10,7 @@
 "modifyLanguage" = "修改语言";
 "notifications" = "通知列表";
 "pushNotification" = "通知开关";
+"issiaTitle" = "意见反馈";
 "WebNotification" = "升级网页";
 "contactUs" = "联系我们";
 "about" = "关于";
@@ -41,6 +42,7 @@
 "username" = "你的昵称";
 "userDescription" = "关于";
 
-"home_note" = "笔记";
-"home_recommend" = "阅读";
+"home_note" = "热门素材";
+"home_recommend" = "我的涂鸦";
+"home_works" = "作品展";
 

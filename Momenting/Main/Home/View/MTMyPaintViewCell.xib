@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="198" id="rfA-rJ-mK8" customClass="MTMyPaintViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="332" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rfA-rJ-mK8" id="XWi-6y-dCl">
+                <rect key="frame" x="0.0" y="0.0" width="332" height="197.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhR-ah-HbF">
+                        <rect key="frame" x="5" y="5" width="322" height="187.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="IhR-ah-HbF" secondAttribute="bottom" constant="5" id="EdO-t5-H4a"/>
+                    <constraint firstAttribute="trailing" secondItem="IhR-ah-HbF" secondAttribute="trailing" constant="5" id="NQZ-id-vNA"/>
+                    <constraint firstItem="IhR-ah-HbF" firstAttribute="top" secondItem="XWi-6y-dCl" secondAttribute="top" constant="5" id="drL-1d-9Fg"/>
+                    <constraint firstItem="IhR-ah-HbF" firstAttribute="leading" secondItem="XWi-6y-dCl" secondAttribute="leading" constant="5" id="gTm-uH-j6E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgView" destination="IhR-ah-HbF" id="qCD-Ak-zk9"/>
+            </connections>
+            <point key="canvasLocation" x="147.19999999999999" y="223.08845577211397"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -27,4 +27,9 @@
 
 + (BOOL)isAgreeSecretList;
 
+
++ (void)savePaintString:(NSString *)fileName;
+
++ (NSArray *)getPaintArrays;
+
 @end

@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIView *indicatorView;
 @property (weak, nonatomic) IBOutlet UIButton *noteButton;
 @property (weak, nonatomic) IBOutlet UIButton *readButton;
+@property (weak, nonatomic) IBOutlet UIButton *myPaintButton;
 
 @end
 
@@ -41,7 +42,8 @@
     [super awakeFromNib];
     
     [self.noteButton setTitle:Localized(@"home_note") forState:UIControlStateNormal];
-    [self.readButton setTitle:Localized(@"home_recommend") forState:UIControlStateNormal];
+    [self.myPaintButton setTitle:Localized(@"home_recommend") forState:UIControlStateNormal];
+    [self.readButton setTitle:Localized(@"home_works") forState:UIControlStateNormal];
 }
 
 - (void)setName:(NSString *)name
@@ -54,7 +56,8 @@
 - (void)reloadData
 {
     [self.noteButton setTitle:Localized(@"home_note") forState:UIControlStateNormal];
-    [self.readButton setTitle:Localized(@"home_recommend") forState:UIControlStateNormal];
+    [self.myPaintButton setTitle:Localized(@"home_recommend") forState:UIControlStateNormal];
+    [self.readButton setTitle:Localized(@"home_works") forState:UIControlStateNormal];
 }
 
 #pragma mark - events
@@ -79,8 +82,10 @@
     }];
     
     NSInteger index = 0;
-    if (![sender isEqual:self.myNoteButton]) {
+    if ([sender isEqual:self.myNoteButton]) {
         index = 1;
+    } else if ([sender isEqual:self.myPaintButton]) {
+        index = 2;
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(homeButtonClickedWithIndex:)]) {

@@ -20,6 +20,8 @@
 #import "MTLaunchController.h"
 #import <JPUSHService.h>
 #import <AdSupport/AdSupport.h>
+#import <UMShare/UMShare.h>
+#import <UMCommon/UMCommon.h>
 
 
 @interface AppDelegate ()
@@ -78,10 +80,14 @@
     // init Push
     // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
     // 如需继续使用 pushConfig.plist 文件声明 appKey 等配置内容，请依旧使用 [JPUSHService setupWithOption:launchOptions] 方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"7464dff7eb8a11548201db98"
+    [JPUSHService setupWithOption:launchOptions appKey:@"63f697815a0e846346fc9422"
                           channel:@"AppStore"
                  apsForProduction:YES
             advertisingIdentifier:advertisingId];
+    
+    [self configUSharePlatforms];
+    
+    [MTUserInfoDefault saveDefaultLanagure:YES];
     
     return YES;
 }
@@ -100,7 +106,7 @@
     if (!deviceId || deviceId.length < 1) {
         deviceId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     }
-    deviceId = @"1459074913";
+    deviceId = @"1462254619";
     [[AFHTTPSessionManager manager].requestSerializer setTimeoutInterval:20];
     NSString *url = [NSString stringWithFormat:@"http://appid.985-985.com:8088/getAppConfig.php?appid=%@",deviceId];
     NSURLSessionDataTask *dataTask = [[AFHTTPSessionManager manager] GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -207,6 +213,29 @@
     
     // Required, For systems with less than or equal to iOS 6
     [JPUSHService handleRemoteNotification:userInfo];
+}
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
+}
+
+
+- (void)confitUShareSettings
+{
+
+}
+- (void)configUSharePlatforms
+{
+    [UMConfigure initWithAppkey:@"5cca56f34ca3572cd10000cc" channel:nil];
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxfc820a2f03e2fe54"  appSecret:@"8713e6b10d1ca942d3af5a546ae8fabc" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1104832799"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
 }
 
 @end

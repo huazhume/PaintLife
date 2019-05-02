@@ -113,19 +113,19 @@
 
 - (void)config
 {
-    NSMutableArray *notificationMuArray = [NSMutableArray array];
-    NSDictionary *dayDicOne = @{@"time" : @"9:00",@"content" : @"弃捐勿复道，努力加餐饭。早安",@"id" : @"one"};
-    NSDictionary *dayDicTwo = @{@"time" : @"12:00",@"content" : @"且食勿踟蹰，南风吹作竹。午安" ,@"id" : @"two"};
-    NSDictionary *dayDicThree = @{@"time" : @"13:00",@"content" : @"午窗春日影悠悠，一觉清眠万事休。该睡觉啦",@"id" : @"three"};
-    NSDictionary *dayDicForth = @{@"time" : @"14:00",@"content" : @"路曼曼其修远兮，吾将上下而求索。好好工作",@"id" : @"four"};
-    NSDictionary *dayDicFirth = @{@"time" : @"18:50",@"content" : @"黄昏潮落南沙明，月光涵沙秋雪清。要下班啦，注意安全",@"id" : @"fice"};
-    NSDictionary *dayDicSix = @{@"time" : @"22:00",@"content" : @"南风知我意，吹梦到西洲。我想你，晚安",@"id" : @"six"};
-    [notificationMuArray addObject:dayDicOne];
-    [notificationMuArray addObject:dayDicTwo];
-    [notificationMuArray addObject:dayDicThree];
-    [notificationMuArray addObject:dayDicForth];
-    [notificationMuArray addObject:dayDicFirth];
-    [notificationMuArray addObject:dayDicSix];
+//    NSMutableArray *notificationMuArray = [NSMutableArray array];
+//    NSDictionary *dayDicOne = @{@"time" : @"9:00",@"content" : @"弃捐勿复道，努力加餐饭。早安",@"id" : @"one"};
+//    NSDictionary *dayDicTwo = @{@"time" : @"12:00",@"content" : @"且食勿踟蹰，南风吹作竹。午安" ,@"id" : @"two"};
+//    NSDictionary *dayDicThree = @{@"time" : @"13:00",@"content" : @"午窗春日影悠悠，一觉清眠万事休。该睡觉啦",@"id" : @"three"};
+//    NSDictionary *dayDicForth = @{@"time" : @"14:00",@"content" : @"路曼曼其修远兮，吾将上下而求索。好好工作",@"id" : @"four"};
+//    NSDictionary *dayDicFirth = @{@"time" : @"18:50",@"content" : @"黄昏潮落南沙明，月光涵沙秋雪清。要下班啦，注意安全",@"id" : @"fice"};
+//    NSDictionary *dayDicSix = @{@"time" : @"22:00",@"content" : @"南风知我意，吹梦到西洲。我想你，晚安",@"id" : @"six"};
+//    [notificationMuArray addObject:dayDicOne];
+//    [notificationMuArray addObject:dayDicTwo];
+//    [notificationMuArray addObject:dayDicThree];
+//    [notificationMuArray addObject:dayDicForth];
+//    [notificationMuArray addObject:dayDicFirth];
+//    [notificationMuArray addObject:dayDicSix];
     
 //    [notificationMuArray enumerateObjectsUsingBlock:^(NSDictionary  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
 //        MTNotificationVo *vo = [MTNotificationVo new];
