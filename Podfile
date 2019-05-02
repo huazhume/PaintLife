@@ -15,7 +15,6 @@ pod 'UMCSecurityPlugins'
 pod 'UMCShare/UI'
 pod 'UMCShare/Social/ReducedQQ'
 pod 'UMCShare/Social/WeChat'
-pod 'UMCShare/Social/ReducedSina'
 
   # Pods for Momenting
 

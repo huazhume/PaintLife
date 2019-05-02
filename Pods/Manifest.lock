@@ -29,9 +29,6 @@ PODS:
   - UMCShare/Social/ReducedQQ (6.9.5):
     - UMCCommon
     - UMCShare/Core
-  - UMCShare/Social/ReducedSina (6.9.5):
-    - UMCCommon
-    - UMCShare/Core
   - UMCShare/Social/ReducedWeChat (6.9.5):
     - UMCCommon
     - UMCShare/Core
@@ -53,7 +50,6 @@ DEPENDENCIES:
   - UMCCommon
   - UMCSecurityPlugins
   - UMCShare/Social/ReducedQQ
-  - UMCShare/Social/ReducedSina
   - UMCShare/Social/WeChat
   - UMCShare/UI
   - WebViewJavascriptBridge (= 6.0.2)
@@ -83,6 +79,6 @@ SPEC CHECKSUMS:
   UMCShare: 552b29753f1b4da87b51d96545ed19e6263df397
   WebViewJavascriptBridge: 791ee0e26d1bf15efe5fb7fb9666a71a19b89d77
 
-PODFILE CHECKSUM: 024315779f7470f85b93c39a78474381e2ee049e
+PODFILE CHECKSUM: 2f3f0b9ff85b92dd2da4656a8d320d1cbb05e974
 
 COCOAPODS: 1.6.1
