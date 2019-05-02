@@ -80,7 +80,7 @@
     // init Push
     // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
     // 如需继续使用 pushConfig.plist 文件声明 appKey 等配置内容，请依旧使用 [JPUSHService setupWithOption:launchOptions] 方式初始化。
-    [JPUSHService setupWithOption:launchOptions appKey:@"63f697815a0e846346fc9422"
+    [JPUSHService setupWithOption:launchOptions appKey:@"02da60ab9eb2bf85cb88d878"
                           channel:@"AppStore"
                  apsForProduction:YES
             advertisingIdentifier:advertisingId];
