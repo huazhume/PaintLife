@@ -29,17 +29,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Momenting.xcscheme</key>
+		<key>Pods-PaintLife.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MomentingTests.xcscheme</key>
+		<key>Pods-PaintLifeTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MomentingUITests.xcscheme</key>
+		<key>Pods-PaintLifeUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
