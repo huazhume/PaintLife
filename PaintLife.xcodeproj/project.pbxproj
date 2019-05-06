@@ -83,6 +83,8 @@
 		FB514EE02261A7CE0046EB66 /* MTActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB514EDF2261A7CE0046EB66 /* MTActivityView.m */; };
 		FB563229227A7F920030C569 /* MTMyPaintViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB563227227A7F920030C569 /* MTMyPaintViewCell.m */; };
 		FB56322A227A7F920030C569 /* MTMyPaintViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB563228227A7F920030C569 /* MTMyPaintViewCell.xib */; };
+		FB7E7F002280228A002DA100 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = FB7E7EFE2280228A002DA100 /* func.list */; };
+		FB7E7F012280228A002DA100 /* confuse.sh in Resources */ = {isa = PBXBuildFile; fileRef = FB7E7EFF2280228A002DA100 /* confuse.sh */; };
 		FB8325BA214B656E007CB95A /* MTLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8325B9214B656E007CB95A /* MTLanguageManager.m */; };
 		FB8325BF214B7824007CB95A /* MTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8325BD214B7824007CB95A /* MTBaseViewController.m */; };
 		FB8325C0214B7824007CB95A /* MTBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8325BE214B7824007CB95A /* MTBaseViewController.xib */; };
@@ -494,6 +496,9 @@
 		FB563226227A7F920030C569 /* MTMyPaintViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMyPaintViewCell.h; sourceTree = "<group>"; };
 		FB563227227A7F920030C569 /* MTMyPaintViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTMyPaintViewCell.m; sourceTree = "<group>"; };
 		FB563228227A7F920030C569 /* MTMyPaintViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTMyPaintViewCell.xib; sourceTree = "<group>"; };
+		FB7E7EFD22802229002DA100 /* codeObfuscation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = codeObfuscation.h; path = PaintLife/codeObfuscation.h; sourceTree = SOURCE_ROOT; };
+		FB7E7EFE2280228A002DA100 /* func.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
+		FB7E7EFF2280228A002DA100 /* confuse.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
 		FB8325B8214B656E007CB95A /* MTLanguageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTLanguageManager.h; sourceTree = "<group>"; };
 		FB8325B9214B656E007CB95A /* MTLanguageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTLanguageManager.m; sourceTree = "<group>"; };
 		FB8325BC214B7824007CB95A /* MTBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTBaseViewController.h; sourceTree = "<group>"; };
@@ -1175,6 +1180,7 @@
 				FB2989C321193BC10011025D /* main.m */,
 				72E97348211FD81F00D96DA4 /* MTCommons.h */,
 				72E97349211FD81F00D96DA4 /* MTHeaderPrefix.pch */,
+				FB7E7EFD22802229002DA100 /* codeObfuscation.h */,
 				FBDDBE3121378EBD002A88FE /* Language.strings */,
 			);
 			path = "Supporting Files";
@@ -1201,6 +1207,8 @@
 		FB2989A821193BC10011025D = {
 			isa = PBXGroup;
 			children = (
+				FB7E7EFF2280228A002DA100 /* confuse.sh */,
+				FB7E7EFE2280228A002DA100 /* func.list */,
 				FB2989B321193BC10011025D /* PaintLife */,
 				FB2989CC21193BC10011025D /* PaintLifeTests */,
 				FB2989D721193BC10011025D /* PaintLifeUITests */,
@@ -1912,6 +1920,7 @@
 				FB0BE9CA227AB48D00BB0C9E /* palette.png in Resources */,
 				FBE63D63227979BC004BA21D /* famous_8.png in Resources */,
 				FBE63D77227979BC004BA21D /* message_10.png in Resources */,
+				FB7E7F002280228A002DA100 /* func.list in Resources */,
 				FBE63D3D227979BC004BA21D /* animal_11.png in Resources */,
 				FBE63D19227979BC004BA21D /* famous_4.png in Resources */,
 				FBDDBE512137B253002A88FE /* EBMuteDetector.mp3 in Resources */,
@@ -2037,6 +2046,7 @@
 				FBE6EF992279DE5B0087678B /* works_10.jpeg in Resources */,
 				FBE63D44227979BC004BA21D /* floral_7.png in Resources */,
 				FBE63D1D227979BC004BA21D /* dongfang_1.png in Resources */,
+				FB7E7F012280228A002DA100 /* confuse.sh in Resources */,
 				FBE63D0C227979BC004BA21D /* dongfang_7.png in Resources */,
 				FBE63D50227979BC004BA21D /* garden_1.png in Resources */,
 				FBE63D26227979BC004BA21D /* animal_5.png in Resources */,
@@ -2155,7 +2165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaintLife/Pods-PaintLife-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaintLife/Pods-PaintLife-resources.sh\"\n\"$PROJECT_DIR/confuse.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AE0C3552A8F2BD9F6FC68138 /* [CP] Check Pods Manifest.lock */ = {

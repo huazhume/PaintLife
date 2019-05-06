@@ -36,6 +36,7 @@
 #import "MTUserInfoDefault.h"
 #import "MTSharedManager.h"
 #import <MJRefresh/MJRefresh.h>
+#import "codeObfuscation.h"
 
 
 #endif /* MYCommons_h */
