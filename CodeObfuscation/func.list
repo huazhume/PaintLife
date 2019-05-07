@@ -1,0 +1,29 @@
+
+AddMinutesNotification
+currentColorBlock
+setupHUDToastView
+insertDatas
+withType
+getNoteSelf
+getNoteDetailList
+insertNotificationDatas
+getNotifications
+deleteNotificationWithContent
+getDocumentUrlPath
+
+
+saveDefaultUserInfo
+getUserDefaultMeModel
+saveDefaultLanagure
+getUserDefaultLanagureIsChinese
+saveHomeWebURL
+getHomeWebURL
+saveAgreeSecretList
+isAgreeSecretList
+savePaintString
+getPaintArrays
+
+
+- (void)addNotificationWithVo
+
+- (void)showPushViewWithUserinfo:(NSDictionary *)userinfo;

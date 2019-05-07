@@ -83,12 +83,12 @@
 		FB514EE02261A7CE0046EB66 /* MTActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB514EDF2261A7CE0046EB66 /* MTActivityView.m */; };
 		FB563229227A7F920030C569 /* MTMyPaintViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB563227227A7F920030C569 /* MTMyPaintViewCell.m */; };
 		FB56322A227A7F920030C569 /* MTMyPaintViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB563228227A7F920030C569 /* MTMyPaintViewCell.xib */; };
-		FB7E7F002280228A002DA100 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = FB7E7EFE2280228A002DA100 /* func.list */; };
-		FB7E7F012280228A002DA100 /* confuse.sh in Resources */ = {isa = PBXBuildFile; fileRef = FB7E7EFF2280228A002DA100 /* confuse.sh */; };
 		FB8325BA214B656E007CB95A /* MTLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8325B9214B656E007CB95A /* MTLanguageManager.m */; };
 		FB8325BF214B7824007CB95A /* MTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8325BD214B7824007CB95A /* MTBaseViewController.m */; };
 		FB8325C0214B7824007CB95A /* MTBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8325BE214B7824007CB95A /* MTBaseViewController.xib */; };
 		FB874ACA212160FF0050DD58 /* MTDeleteStyleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB874AC9212160FF0050DD58 /* MTDeleteStyleTableView.m */; };
+		FB901B9922810CC200C0ACC6 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = FB901B9822810CC200C0ACC6 /* func.list */; };
+		FB901B9D228113B900C0ACC6 /* XBCommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = FB901B9C228113B900C0ACC6 /* XBCommonMethods.m */; };
 		FB9B4AA62261ABCC001654FE /* MTMarketHotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9B4AA12261ABCB001654FE /* MTMarketHotView.m */; };
 		FB9B4AA72261ABCC001654FE /* MTMarketHotBannerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9B4AA32261ABCB001654FE /* MTMarketHotBannerCell.m */; };
 		FB9B4AA82261ABCC001654FE /* MTMarketHotItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9B4AA42261ABCB001654FE /* MTMarketHotItemView.m */; };
@@ -496,9 +496,6 @@
 		FB563226227A7F920030C569 /* MTMyPaintViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTMyPaintViewCell.h; sourceTree = "<group>"; };
 		FB563227227A7F920030C569 /* MTMyPaintViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTMyPaintViewCell.m; sourceTree = "<group>"; };
 		FB563228227A7F920030C569 /* MTMyPaintViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTMyPaintViewCell.xib; sourceTree = "<group>"; };
-		FB7E7EFD22802229002DA100 /* codeObfuscation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = codeObfuscation.h; path = PaintLife/codeObfuscation.h; sourceTree = SOURCE_ROOT; };
-		FB7E7EFE2280228A002DA100 /* func.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
-		FB7E7EFF2280228A002DA100 /* confuse.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
 		FB8325B8214B656E007CB95A /* MTLanguageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTLanguageManager.h; sourceTree = "<group>"; };
 		FB8325B9214B656E007CB95A /* MTLanguageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTLanguageManager.m; sourceTree = "<group>"; };
 		FB8325BC214B7824007CB95A /* MTBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTBaseViewController.h; sourceTree = "<group>"; };
@@ -506,6 +503,11 @@
 		FB8325BE214B7824007CB95A /* MTBaseViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTBaseViewController.xib; sourceTree = "<group>"; };
 		FB874AC8212160FF0050DD58 /* MTDeleteStyleTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDeleteStyleTableView.h; sourceTree = "<group>"; };
 		FB874AC9212160FF0050DD58 /* MTDeleteStyleTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDeleteStyleTableView.m; sourceTree = "<group>"; };
+		FB901B9622810C0B00C0ACC6 /* confuse.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = confuse.sh; sourceTree = "<group>"; };
+		FB901B9822810CC200C0ACC6 /* func.list */ = {isa = PBXFileReference; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
+		FB901B9A22810CD700C0ACC6 /* codeObfuscation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = codeObfuscation.h; sourceTree = "<group>"; };
+		FB901B9B228113B900C0ACC6 /* XBCommonMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XBCommonMethods.h; sourceTree = "<group>"; };
+		FB901B9C228113B900C0ACC6 /* XBCommonMethods.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XBCommonMethods.m; sourceTree = "<group>"; };
 		FB9B4AA02261ABCB001654FE /* MTMarketHotItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMarketHotItemView.h; sourceTree = "<group>"; };
 		FB9B4AA12261ABCB001654FE /* MTMarketHotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMarketHotView.m; sourceTree = "<group>"; };
 		FB9B4AA22261ABCB001654FE /* MTMarketHotBannerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMarketHotBannerCell.h; sourceTree = "<group>"; };
@@ -1180,7 +1182,6 @@
 				FB2989C321193BC10011025D /* main.m */,
 				72E97348211FD81F00D96DA4 /* MTCommons.h */,
 				72E97349211FD81F00D96DA4 /* MTHeaderPrefix.pch */,
-				FB7E7EFD22802229002DA100 /* codeObfuscation.h */,
 				FBDDBE3121378EBD002A88FE /* Language.strings */,
 			);
 			path = "Supporting Files";
@@ -1207,8 +1208,7 @@
 		FB2989A821193BC10011025D = {
 			isa = PBXGroup;
 			children = (
-				FB7E7EFF2280228A002DA100 /* confuse.sh */,
-				FB7E7EFE2280228A002DA100 /* func.list */,
+				FB901B9522810BD000C0ACC6 /* CodeObfuscation */,
 				FB2989B321193BC10011025D /* PaintLife */,
 				FB2989CC21193BC10011025D /* PaintLifeTests */,
 				FB2989D721193BC10011025D /* PaintLifeUITests */,
@@ -1343,6 +1343,18 @@
 				FB874AC9212160FF0050DD58 /* MTDeleteStyleTableView.m */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		FB901B9522810BD000C0ACC6 /* CodeObfuscation */ = {
+			isa = PBXGroup;
+			children = (
+				FB901B9622810C0B00C0ACC6 /* confuse.sh */,
+				FB901B9822810CC200C0ACC6 /* func.list */,
+				FB901B9A22810CD700C0ACC6 /* codeObfuscation.h */,
+				FB901B9B228113B900C0ACC6 /* XBCommonMethods.h */,
+				FB901B9C228113B900C0ACC6 /* XBCommonMethods.m */,
+			);
+			path = CodeObfuscation;
 			sourceTree = "<group>";
 		};
 		FB9B4A9F2261ABC4001654FE /* Banner */ = {
@@ -1807,6 +1819,7 @@
 				FB2989AE21193BC10011025D /* Frameworks */,
 				FB2989AF21193BC10011025D /* Resources */,
 				150E040A58F4960E23034B5E /* [CP] Copy Pods Resources */,
+				FB901B9722810C1A00C0ACC6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1861,7 +1874,7 @@
 		FB2989A921193BC10011025D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = PT;
+				CLASSPREFIX = XB;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "xiaobai zhang";
 				TargetAttributes = {
@@ -1920,7 +1933,7 @@
 				FB0BE9CA227AB48D00BB0C9E /* palette.png in Resources */,
 				FBE63D63227979BC004BA21D /* famous_8.png in Resources */,
 				FBE63D77227979BC004BA21D /* message_10.png in Resources */,
-				FB7E7F002280228A002DA100 /* func.list in Resources */,
+				FB901B9922810CC200C0ACC6 /* func.list in Resources */,
 				FBE63D3D227979BC004BA21D /* animal_11.png in Resources */,
 				FBE63D19227979BC004BA21D /* famous_4.png in Resources */,
 				FBDDBE512137B253002A88FE /* EBMuteDetector.mp3 in Resources */,
@@ -2046,7 +2059,6 @@
 				FBE6EF992279DE5B0087678B /* works_10.jpeg in Resources */,
 				FBE63D44227979BC004BA21D /* floral_7.png in Resources */,
 				FBE63D1D227979BC004BA21D /* dongfang_1.png in Resources */,
-				FB7E7F012280228A002DA100 /* confuse.sh in Resources */,
 				FBE63D0C227979BC004BA21D /* dongfang_7.png in Resources */,
 				FBE63D50227979BC004BA21D /* garden_1.png in Resources */,
 				FBE63D26227979BC004BA21D /* animal_5.png in Resources */,
@@ -2165,8 +2177,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaintLife/Pods-PaintLife-resources.sh\"\n\"$PROJECT_DIR/confuse.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PaintLife/Pods-PaintLife-resources.sh\"\n";
 		};
 		AE0C3552A8F2BD9F6FC68138 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2222,6 +2233,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB901B9722810C1A00C0ACC6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PROJECT_DIR/CodeObfuscation/confuse.sh\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2264,6 +2292,7 @@
 				FBE63D8722798AA8004BA21D /* UIImage+FloodFill.m in Sources */,
 				FBDDBE472137B253002A88FE /* EBBannerView+Categories.m in Sources */,
 				72E972E8211FCE8700D96DA4 /* MTNoteModel.m in Sources */,
+				FB901B9D228113B900C0ACC6 /* XBCommonMethods.m in Sources */,
 				FB9B4AA62261ABCC001654FE /* MTMarketHotView.m in Sources */,
 				FBC099932133D54B00242E1F /* MTAddNotificationCell.m in Sources */,
 				72E972DF211FCE8700D96DA4 /* MTHomeEmptyView.m in Sources */,

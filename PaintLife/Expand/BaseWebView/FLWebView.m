@@ -20,6 +20,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        [XBCommonMethods commonMethods1];
         WKWebViewConfiguration *webConfig = [[WKWebViewConfiguration alloc] init];
         //将所有cookie以document.cookie = 'key=value';形式进行拼接(引号一定要是英文)
         NSString *cookieValue = [self getCookieValue];
@@ -49,10 +51,13 @@
 #pragma mark - Notification
 - (void)addNotifications
 {
+    [XBCommonMethods commonMethods1];
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    
+    [XBCommonMethods commonMethods1];
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         self.progressView.progress = self.webView.estimatedProgress;
         if (self.progressView.progress == 1) {
@@ -67,11 +72,14 @@
 }
 
 -(NSString *)getCookieValue{
+    
+    [XBCommonMethods commonMethods1];
     return @"PaintLife";
 }
 
 
 -(void)setUpBridge{
+    [XBCommonMethods commonMethods1];
     [WebViewJavascriptBridge enableLogging];
     _bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];
     [_bridge setWebViewDelegate:self];
@@ -81,6 +89,7 @@
 
 //处理OC与JS交互
 -(void)registerHandler{
+    [XBCommonMethods commonMethods1];
     
 }
 
@@ -101,6 +110,7 @@
     NSURL *URL = [NSURL URLWithString:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     
+    [XBCommonMethods commonMethods1];
     if ([url hasPrefix:@"http"]) {
         [self.webView loadRequest:request];
     } else {
@@ -129,6 +139,8 @@
 }
 
 -(void)dealloc{
+    
+    [XBCommonMethods commonMethods1];
     if (self.webView) {
         [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
         self.webView = nil;
@@ -142,6 +154,7 @@
     decisionHandler(WKNavigationActionPolicyAllow);
     NSString *url = [navigationAction.request.URL.absoluteString stringByRemovingPercentEncoding];
     
+    [XBCommonMethods commonMethods1];
     if ([url hasPrefix:@"itms"]) {
          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     }
@@ -152,6 +165,8 @@
 
 //开始加载
 -(void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    
+    [XBCommonMethods commonMethods1];
     if ([self.delegate respondsToSelector:@selector(webViewdidStart:Navigation:)]) {
         [self.delegate webViewdidStart:webView Navigation:navigation];
     }
@@ -159,6 +174,8 @@
 
 //加载完成
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    
+    [XBCommonMethods commonMethods1];
     if ([self.delegate respondsToSelector:@selector(webViewdidFinish:Navigation:)]) {
         [self.delegate webViewdidFinish:webView Navigation:navigation];
     }
@@ -166,6 +183,8 @@
 
 //加载失败
 -(void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    
+    [XBCommonMethods commonMethods1];
     if ([self.delegate respondsToSelector:@selector(webView:Navigation:didFail:)]) {
         [self.delegate webView:webView Navigation:navigation didFail:error];
     }
@@ -173,6 +192,7 @@
 
 #pragma mark - 懒加载
 -(UIProgressView *)progressView{
+    [XBCommonMethods commonMethods1];
     if (!_progressView) {
         _progressView = [[UIProgressView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
         _progressView.trackTintColor = [UIColor clearColor];

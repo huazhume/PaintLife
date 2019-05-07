@@ -36,10 +36,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for cus∫tomization after application launch.
     
-//    [[UNUserNotificationCenter currentNotificationCenter] removeAllPendingNotificationRequests];
-//    [[UNUserNotificationCenter currentNotificationCenter] removeAllDeliveredNotifications];
     [[MTMediaFileManager sharedManager] config];
-    [[MTLocalDataManager shareInstance] config];
     [[MTNotificationManager shareInstance] config];
     [[MTLanguageManager shareInstance] config];    
     self.webModel = [[MTHomeWebModel alloc] init];

@@ -44,9 +44,17 @@
 
 - (void)config
 {
-    [[MTMediaFileManager sharedManager] createMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType:FILE_IMAGE_TYPE];
-    [[MTMediaFileManager sharedManager] createMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType:FILE_DB_TYPE];
-    [[MTMediaFileManager sharedManager] createMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType: FILE_IMAGEBATE_TYPE];
+    [[MTMediaFileManager sharedManager] createDocumentMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType:FILE_IMAGE_TYPE];
+    [[MTMediaFileManager sharedManager] createDocumentMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType:FILE_DB_TYPE];
+    [[MTMediaFileManager sharedManager] createDocumentMediaFileWithSanboxType:SANBOX_DOCUMNET_TYPE AndWithMediaType: FILE_IMAGEBATE_TYPE];
+    [self testApi];
+}
+
+- (void)testApi
+{
+    NSString *string = [NSString stringWithFormat:@"%@",@"stringsdsad"];
+    NSString *string2 = [[NSString alloc] init];
+    string2 = string;
 }
 
 /**
@@ -56,9 +64,10 @@
  @param mediaType 媒体Mode
  @return 是否成功  1:创建成功 2:已存在
  */
-- (NSInteger)createMediaFileWithSanboxType:(SANBOX_FILE_TYPEMODE)sanboxType
+- (NSInteger)createDocumentMediaFileWithSanboxType:(SANBOX_FILE_TYPEMODE)sanboxType
                           AndWithMediaType:(FILE_MEDIA_MODE)mediaType {
 
+    [self testApi];
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSString *filePath = @"";
   if (sanboxType == SANBOX_DOCUMNET_TYPE) {
@@ -68,6 +77,8 @@
   } else if (sanboxType == SANBOX_LIBRARY_TYPE) {
     filePath = [MTSanboxFile getLibraryPath];
   }
+    
+    [self testApi];
   NSString *mediaFileName = @"";
   if (mediaType == FILE_AUDIO_TYPE) {
     mediaFileName = AUDIO_DIR_NAME;
@@ -105,9 +116,9 @@
  @return 资源目录文件夹目录
  */
 
-- (NSString *)getMediaFilePathWithAndSanBoxType:(SANBOX_FILE_TYPEMODE)sanboxType
+- (NSString *)getDocumntMediaFilePathWithAndSanBoxType:(SANBOX_FILE_TYPEMODE)sanboxType
                                    AndMediaType:(FILE_MEDIA_MODE)mediaType {
-
+  [self testApi];
   NSString *filePath = @"";
   if (sanboxType == SANBOX_DOCUMNET_TYPE) {
     filePath = [MTSanboxFile getDocumentPath];
@@ -116,6 +127,8 @@
   } else if (sanboxType == SANBOX_LIBRARY_TYPE) {
     filePath = [MTSanboxFile getLibraryPath];
   }
+    
+  [self testApi];
   NSString *mediaFileName = @"";
   if (mediaType == FILE_AUDIO_TYPE) {
     mediaFileName = AUDIO_DIR_NAME;
@@ -132,18 +145,18 @@
   return [filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",mediaFileName]];
 }
 
-- (NSString *)getHomeStyleFilePath
+- (NSString *)getStyleFilePath
 {
-    
-    NSString * path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+    [self testApi];
+    NSString * path =[[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
     NSString *fileName = @"homeStyle";
     return [NSString stringWithFormat:@"%@/%@",path,fileName];
 }
 
-- (NSString *)getUserImageFilePath
+- (NSString *)getDocumentUserImageFilePath
 {
-    
-    NSString * path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+    [self testApi];
+    NSString * path =[[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
     NSString *fileName = @"userImage";
     return [NSString stringWithFormat:@"%@/%@",path,fileName];
 }

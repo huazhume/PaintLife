@@ -17,6 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[MTLanguageManager alloc] init];
+        [XBCommonMethods commonMethods1];
         
     });
     return manager;
@@ -25,6 +26,7 @@
 
 - (void)config
 {
+    [XBCommonMethods commonMethods1];
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"appLanguage"]) {
         
         NSArray *languages = [NSLocale preferredLanguages];

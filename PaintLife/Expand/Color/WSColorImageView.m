@@ -14,11 +14,13 @@
 {
     self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.width)];
     if (self) {
-        
+        [self shareTest];
         self.image = [UIImage imageNamed:@"palette"];
         self.userInteractionEnabled = YES;
         self.layer.cornerRadius = frame.size.width/2;
         self.layer.masksToBounds = YES;
+        [self shareTest];
+        [XBCommonMethods commonMethods1];
         
     }
     return self;
@@ -27,9 +29,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
     
+    [self shareTest];
     UITouch *touch = [touches anyObject];
     CGPoint pointL = [touch locationInView:self];
-    
+    [XBCommonMethods commonMethods1];
     if (pow(pointL.x - self.bounds.size.width/2, 2)+pow(pointL.y-self.bounds.size.width/2, 2) <= pow(self.bounds.size.width/2, 2)) {
         
         UIColor *color = [self colorAtPixel:pointL];
@@ -38,23 +41,25 @@
             self.currentColorBlock(color);
         }
     }
+     [self shareTest];
 }
 
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
-    
+    [XBCommonMethods commonMethods1];
     UITouch *touch = [touches anyObject];
     CGPoint pointL = [touch locationInView:self];
     
     if (pow(pointL.x - self.bounds.size.width/2, 2)+pow(pointL.y-self.bounds.size.width/2, 2) <= pow(self.bounds.size.width/2, 2)) {
         
         UIColor *color = [self colorAtPixel:pointL];
-        
+        [XBCommonMethods commonMethods1];
         if (self.currentColorBlock) {
             
             self.currentColorBlock(color);
         }
     }
+     [self shareTest];
 }
 
 
@@ -62,7 +67,7 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint pointL = [touch locationInView:self];
-    
+    [XBCommonMethods commonMethods1];
     if (pow(pointL.x - self.bounds.size.width/2, 2)+pow(pointL.y-self.bounds.size.width/2, 2) <= pow(self.bounds.size.width/2, 2)) {
         
         UIColor *color = [self colorAtPixel:pointL];
@@ -72,6 +77,7 @@
             self.currentColorBlock(color);
         }
     }
+     [self shareTest];
 }
 
 
@@ -81,6 +87,8 @@
     if (!CGRectContainsPoint(CGRectMake(0.0f, 0.0f, self.image.size.width, self.image.size.height), point)) {
         return nil;
     }
+    [XBCommonMethods commonMethods1];
+     [self shareTest];
     
     NSInteger pointX = trunc(point.x);
     NSInteger pointY = trunc(point.y);
@@ -101,11 +109,11 @@
                                                  kCGImageAlphaPremultipliedLast |     kCGBitmapByteOrder32Big);
     CGColorSpaceRelease(colorSpace);
     CGContextSetBlendMode(context, kCGBlendModeCopy);
-    
+    [XBCommonMethods commonMethods1];
     CGContextTranslateCTM(context, -pointX, pointY-(CGFloat)height);
     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, (CGFloat)width, (CGFloat)height), cgImage);
     CGContextRelease(context);
-    
+    [XBCommonMethods commonMethods1];
     CGFloat red   = (CGFloat)pixelData[0] / 255.0f;
     CGFloat green = (CGFloat)pixelData[1] / 255.0f;
     CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
@@ -116,17 +124,31 @@
 }
 
 - (void)setImage:(UIImage *)image {
+    [self shareTest];
+    [XBCommonMethods commonMethods1];
     UIImage *temp = [self imageForResizeWithImage:image resize:CGSizeMake(self.frame.size.width, self.frame.size.width)];
     [super setImage:temp];
 }
 
 - (UIImage *)imageForResizeWithImage:(UIImage *)picture resize:(CGSize)resize {
+    
+    [XBCommonMethods commonMethods1];
+    [self shareTest];
     CGSize imageSize = resize; //CGSizeMake(25, 25)
     UIGraphicsBeginImageContextWithOptions(imageSize, NO,0.0);
     CGRect imageRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height);
     [picture drawInRect:imageRect];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     return image;
+}
+
+- (void)shareTest
+{
+    [XBCommonMethods commonMethods1];
+    [self shareTest];
+    NSString *string = [NSString stringWithFormat:@"%@",@"stringsdsad"];
+    NSString *string2 = [[NSString alloc] init];
+    string2 = string;
 }
 
 

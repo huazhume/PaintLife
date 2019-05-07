@@ -35,9 +35,9 @@ RSKImagePickerDelegate,RSKImageCropViewControllerDataSource>
     [super viewDidLoad];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    self.isHomeStyleExist = [fileManager fileExistsAtPath:[[MTMediaFileManager sharedManager] getHomeStyleFilePath]];
+    self.isHomeStyleExist = [fileManager fileExistsAtPath:[[MTMediaFileManager sharedManager] getStyleFilePath]];
     if (self.isHomeStyleExist) {
-        self.bgImageView.image = [UIImage imageWithContentsOfFile:[[MTMediaFileManager sharedManager] getHomeStyleFilePath]];
+        self.bgImageView.image = [UIImage imageWithContentsOfFile:[[MTMediaFileManager sharedManager] getStyleFilePath]];
     }
     [self initBaseViews];
 }
@@ -59,7 +59,7 @@ RSKImagePickerDelegate,RSKImageCropViewControllerDataSource>
     NSString *string = nil;
     if (self.isHomeStyleExist) {
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager removeItemAtPath:[[MTMediaFileManager sharedManager] getHomeStyleFilePath] error:nil];
+        [fileManager removeItemAtPath:[[MTMediaFileManager sharedManager] getStyleFilePath] error:nil];
         self.bgImageView.image = nil;
         self.isHomeStyleExist = NO;
         string = @"删除成功";
@@ -80,7 +80,7 @@ RSKImagePickerDelegate,RSKImageCropViewControllerDataSource>
             data = UIImagePNGRepresentation(image);
         }
         NSFileManager *fileManager = [NSFileManager defaultManager];
-        [fileManager createFileAtPath:[[MTMediaFileManager sharedManager] getHomeStyleFilePath] contents:data attributes:nil];
+        [fileManager createFileAtPath:[[MTMediaFileManager sharedManager] getStyleFilePath] contents:data attributes:nil];
         string = @"更新成功";
     }
     

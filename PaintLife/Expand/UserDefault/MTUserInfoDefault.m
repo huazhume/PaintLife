@@ -39,7 +39,7 @@ static NSString *kLanagureKey = @"appLanguage";
     NSDictionary *info = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     MTMeModel *meModel = [[MTMeModel alloc] init];
     [meModel setValuesForKeysWithDictionary:info];
-    meModel.image = [[MTMediaFileManager sharedManager]getUserImageFilePath];
+    meModel.image = [[MTMediaFileManager sharedManager]getDocumentUserImageFilePath];
     return meModel;
     
 }

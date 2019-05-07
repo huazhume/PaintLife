@@ -175,7 +175,7 @@ MTActionSheetViewDelegate>
         data = UIImagePNGRepresentation(image);
     }
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    [fileManager createFileAtPath:[[MTMediaFileManager sharedManager] getUserImageFilePath] contents:data attributes:nil];
+    [fileManager createFileAtPath:[[MTMediaFileManager sharedManager] getDocumentUserImageFilePath] contents:data attributes:nil];
     [self.tableView reloadData];
 }
 

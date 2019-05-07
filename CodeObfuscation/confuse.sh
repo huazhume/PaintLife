@@ -1,18 +1,18 @@
-!/usr/bin/env bash
+#!/bin/sh
 
-#表格名称
+#  confuse.sh
+#  PaintLife
+#
+#  Created by xiaobai zhang on 2019/5/7.
+#  Copyright © 2019 xiaobai zhang. All rights reserved.
+
 TABLENAME=symbols
-SYMBOL_DB_FILE="symbols"
-
-#文件名称
-STRING_SYMBOL_FILE="func.list"
-
-#宏定义文件
-HEAD_FILE="$PROJECT_DIR/$PROJECT_NAME/codeObfuscation.h"
+SYMBOL_DB_FILE="$PROJECT_DIR/CodeObfuscation/symbols"
+STRING_SYMBOL_FILE="$PROJECT_DIR/CodeObfuscation/func.list"
+HEAD_FILE="$PROJECT_DIR/CodeObfuscation/codeObfuscation.h"
 export LC_CTYPE=C
 
 #维护数据库方便日后作排重
-
 createTable()
 {
 echo "create table $TABLENAME(src text, des text);" | sqlite3 $SYMBOL_DB_FILE
@@ -40,8 +40,7 @@ createTable
 touch $HEAD_FILE
 echo '#ifndef Demo_codeObfuscation_h
 #define Demo_codeObfuscation_h' >> $HEAD_FILE
-
-echo "//confuse string at date" >> $HEAD_FILE
+echo "//confuse string at `date`" >> $HEAD_FILE
 cat "$STRING_SYMBOL_FILE" | while read -ra line; do
 if [[ ! -z "$line" ]]; then
 ramdom=`ramdomString`
@@ -51,5 +50,6 @@ echo "#define $line $ramdom" >> $HEAD_FILE
 fi
 done
 echo "#endif" >> $HEAD_FILE
+
 
 sqlite3 $SYMBOL_DB_FILE .dump

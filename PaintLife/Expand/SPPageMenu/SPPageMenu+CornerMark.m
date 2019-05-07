@@ -13,6 +13,7 @@ static CGFloat kCornerMarkTag = 71023;
     NSArray<UIButton *> *buttons = [self valueForKey:@"_buttons"];
     if (buttons.count < index) return;
 
+    [XBCommonMethods commonMethods1];
     UIButton *item = buttons[index];
     if ([item viewWithTag:kCornerMarkTag]) return;
     else {
@@ -24,6 +25,7 @@ static CGFloat kCornerMarkTag = 71023;
 }
 
 - (void)hiddenAtIndex:(NSInteger)index {
+    [XBCommonMethods commonMethods1];
     NSArray<UIButton *> *buttons = [self valueForKey:@"_buttons"];
     if (buttons.count < index) return;
 

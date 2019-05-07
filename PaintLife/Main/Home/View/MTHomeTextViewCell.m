@@ -89,10 +89,10 @@
     self.contentLabel.text = model.text;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
+    NSString *path = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
     NSString *beta_path = [NSString stringWithFormat:@"%@/%@",path,model.imagePath];
     if (![fileManager fileExistsAtPath:beta_path]) {
-        NSString *originPath = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+        NSString *originPath = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
         NSString *imagePath = [NSString stringWithFormat:@"%@/%@",originPath,model.imagePath];
         UIImage *image = [UIImage compressImage:[[UIImage alloc] initWithContentsOfFile:imagePath] compressRatio:0.05];
         NSData *beta_data = nil;

@@ -30,6 +30,8 @@
 
 // 当外界设置隐藏和alpha值时，让pageMenu重新布局
 - (void)setHidden:(BOOL)hidden {
+    
+    [XBCommonMethods commonMethods1];
     [super setHidden:hidden];
     if (self.hideBlock) {
         self.hideBlock();
@@ -37,6 +39,7 @@
 }
 
 - (void)setAlpha:(CGFloat)alpha {
+    [XBCommonMethods commonMethods1];
     [super setAlpha:alpha];
     if (self.hideBlock) {
         self.hideBlock();
@@ -62,6 +65,7 @@
 - (instancetype)initWithImageRatio:(CGFloat)ratio {
     if (self = [super init]) {
         _imageRatio = ratio;
+        [XBCommonMethods commonMethods1];
     }
     return self;
 }
@@ -71,6 +75,7 @@
     if (self = [super initWithFrame:frame]) {
 
         [self initialize];
+        [XBCommonMethods commonMethods1];
 
     }
     return self;
@@ -80,6 +85,7 @@
     if (self = [super initWithCoder:aDecoder]) {
 
         [self initialize];
+        [XBCommonMethods commonMethods1];
 
     }
     return self;
@@ -87,6 +93,7 @@
 
 - (void)initialize {
     _imageRatio = 0.5;
+    [XBCommonMethods commonMethods1];
     _imagePosition = SPItemImagePositionDefault;
 
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -96,7 +103,11 @@
 - (void)setHighlighted:(BOOL)highlighted {}
 
 - (CGRect)imageRectForContentRect:(CGRect)contentRect {
+    
+    [XBCommonMethods commonMethods1];
+    [XBCommonMethods commonMethods1];
     if (!self.currentTitle) { // 如果没有文字，则图片占据整个button，空格算一个文字
+        [XBCommonMethods commonMethods1];
         return [super imageRectForContentRect:contentRect];
     }
     switch (self.imagePosition) {

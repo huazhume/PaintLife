@@ -278,8 +278,8 @@ MTWeatherAlertViewDelegate>
         beta_data = UIImagePNGRepresentation(beta_image);
     }
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString * path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
-    NSString * beta_path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
+    NSString * path =[[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+    NSString * beta_path =[[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
     NSString *fileName = [NSString stringWithFormat:@"%ld.png",(long)[[NSDate date]timeIntervalSince1970]];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",path,fileName];
     NSString *beta_filePath = [NSString stringWithFormat:@"%@/%@",beta_path,fileName];

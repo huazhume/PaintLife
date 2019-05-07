@@ -32,7 +32,7 @@
     if (![imageUrl containsString:@"min_"]) {
         return;
     }
-    NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
+    NSString *path = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
     NSString *beta_path = [NSString stringWithFormat:@"%@/%@",path,imageUrl];
     
     self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfFile:beta_path]];
@@ -52,7 +52,7 @@
 - (void)setFileName:(NSString *)fileName
 {
     _fileName = fileName;
-    NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+    NSString *path = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
     NSString *beta_path = [NSString stringWithFormat:@"%@/%@",path,fileName];
     
     self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfFile:beta_path]];

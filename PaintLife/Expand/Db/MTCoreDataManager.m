@@ -18,6 +18,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[MTCoreDataManager alloc] init];
+        [manager shareTest];
         
     });
     
@@ -26,7 +27,8 @@
 
 -(NSURL*)getDocumentUrlPath
 {
-    NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_DB_TYPE];
+    [self shareTest];
+    NSString *path = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_DB_TYPE];
     return [NSURL fileURLWithPath:path];
 }
 
@@ -34,6 +36,7 @@
 //懒加载NSManagedObjectContext
 - (NSManagedObjectContext *)managedObjectContext
 {
+    [self shareTest];
     if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
@@ -49,6 +52,7 @@
 //懒加载NSManagedObjectModel
 - (NSManagedObjectModel *)managedObjectModel
 {
+    [self shareTest];
     if(_managedObjectModel != nil)
     {
         return _managedObjectModel;
@@ -68,6 +72,7 @@
 //懒加载NSPersistentStoreCoordinator
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
+    [self shareTest];
     if(_persistentStoreCoordinator != nil)
     {
         return _persistentStoreCoordinator;
@@ -96,7 +101,16 @@
 
 - (void)save
 {
+    [self shareTest];
     [self.managedObjectContext save:nil];
 }
+
+- (void)shareTest
+{
+    NSString *string = [NSString stringWithFormat:@"%@",@"stringsdsad"];
+    NSString *string2 = [[NSString alloc] init];
+    string2 = string;
+}
+
 
 @end

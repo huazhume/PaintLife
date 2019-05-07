@@ -33,15 +33,15 @@ typedef enum {
 + (MTMediaFileManager *)sharedManager;
 
 //获取资源路径
-- (NSString *)getMediaFilePathWithAndSanBoxType:(SANBOX_FILE_TYPEMODE)sanboxType
+- (NSString *)getDocumntMediaFilePathWithAndSanBoxType:(SANBOX_FILE_TYPEMODE)sanboxType
                                    AndMediaType:(FILE_MEDIA_MODE)mediaType;
 
-- (NSInteger)createMediaFileWithSanboxType:(SANBOX_FILE_TYPEMODE)sanboxType
+- (NSInteger)createDocumentMediaFileWithSanboxType:(SANBOX_FILE_TYPEMODE)sanboxType
                           AndWithMediaType:(FILE_MEDIA_MODE)mediaType;
 
-- (NSString *)getHomeStyleFilePath;
+- (NSString *)getStyleFilePath;
 
-- (NSString *)getUserImageFilePath;
+- (NSString *)getDocumentUserImageFilePath;
 
 - (void)config;
 

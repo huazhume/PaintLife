@@ -20,6 +20,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [[MTSharedManager alloc] init];
+        [XBCommonMethods commonMethods1];
         
     });
     return manager;
@@ -27,6 +28,7 @@
 
 - (void)shareImage:(UIImage *)image
 {
+    [XBCommonMethods commonMethods1];
     NSMutableArray *shareTypes = [@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_Qzone)] mutableCopy];
     
     [shareTypes enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -34,6 +36,8 @@
             [shareTypes removeObject:obj];
         }
     }];
+    
+    [XBCommonMethods commonMethods1];
     [UMSocialUIManager setPreDefinePlatforms:shareTypes];
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
         

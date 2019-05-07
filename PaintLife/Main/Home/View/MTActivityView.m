@@ -51,7 +51,7 @@
             [datas enumerateObjectsUsingBlock:^(NSString *imageUrl, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 NSFileManager *fileManager = [NSFileManager defaultManager];
-                NSString *path = [[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
+                NSString *path = [[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGEBATE_TYPE];
                 NSString *beta_path = [NSString stringWithFormat:@"%@/%@",path,imageUrl];
                 if (![fileManager fileExistsAtPath:beta_path]) {
                     NSString *imagePath = [imageUrl substringFromIndex:4];

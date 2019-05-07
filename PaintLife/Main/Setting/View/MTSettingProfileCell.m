@@ -34,7 +34,7 @@
 
 - (void)refreshCell
 {
-     self.coverImageView.image = [UIImage imageWithContentsOfFile:[[MTMediaFileManager sharedManager] getUserImageFilePath]];
+     self.coverImageView.image = [UIImage imageWithContentsOfFile:[[MTMediaFileManager sharedManager] getDocumentUserImageFilePath]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

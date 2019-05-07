@@ -24,6 +24,7 @@ static CGFloat const kMargin = 10;
 + (instancetype)HUDToastViewWithAttributedString:(NSAttributedString *)attributedString
                                           inRect:(CGRect)rect
 {
+    [XBCommonMethods commonMethods1];
     MYHUDToastView *HUDToastView = [[self alloc] initWithAttributedString:attributedString inRect:rect];
     return HUDToastView;
 }
@@ -31,6 +32,7 @@ static CGFloat const kMargin = 10;
 - (instancetype)initWithAttributedString:(NSAttributedString *)attributedString
                                   inRect:(CGRect)rect
 {
+    [XBCommonMethods commonMethods1];
     self = [super init];
     if (self) {
         self.attributedString = attributedString;
@@ -43,6 +45,8 @@ static CGFloat const kMargin = 10;
 
 - (void)setupHUDToastView
 {
+    
+    [XBCommonMethods commonMethods1];
     self.layer.cornerRadius = 6;
 
 //    self.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -87,7 +91,7 @@ static CGFloat const kMargin = 10;
     CGFloat height = kMargin * 2 + expectedHeight;
 
     self.frame = CGRectMake(0, 0, width, height);
-
+    [XBCommonMethods commonMethods1];
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(width, height));
     }];

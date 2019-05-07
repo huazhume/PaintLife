@@ -87,7 +87,7 @@ MTPaintWorksViewDelegate>
     self.datalist = [[[MTLocalDataManager shareInstance] getNoteSelf] mutableCopy];
     
     
-    NSString * path =[[MTMediaFileManager sharedManager] getMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
+    NSString * path =[[MTMediaFileManager sharedManager] getDocumntMediaFilePathWithAndSanBoxType:SANBOX_DOCUMNET_TYPE AndMediaType:FILE_IMAGE_TYPE];
     NSString *fileName = @"homeStyle";
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",path,fileName];
     self.bgImageView.image = [UIImage imageWithContentsOfFile:filePath];

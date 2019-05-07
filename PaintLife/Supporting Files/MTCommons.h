@@ -37,6 +37,7 @@
 #import "MTSharedManager.h"
 #import <MJRefresh/MJRefresh.h>
 #import "codeObfuscation.h"
+#import "XBCommonMethods.h"
 
 
 #endif /* MYCommons_h */
